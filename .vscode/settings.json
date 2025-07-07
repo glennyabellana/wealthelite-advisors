@@ -1,0 +1,35 @@
+{
+  // 1) Point at your project-local phpcs binary:
+  "phpCodeSniffer.exec.osx": "vendor/bin/phpcs",
+
+  // 2) Let it auto-detect all installed standards via the Composer installer:
+  "phpCodeSniffer.standard": "Automatic",
+
+  // 3) Run phpcs only on save (you can also choose "onType"):
+  //   "phpCodeSniffer.run": "onSave",
+
+  // 4) Exclude everything *but* PHP so other file-types aren’t linted by phpcs:
+  "phpCodeSniffer.exclude": [
+    "**/*.js",
+    "**/*.css",
+    "**/*.scss",
+    "**/*.html",
+    "**/*.json"
+  ],
+
+  // 5) Disable VS Code’s built-in PHP validator to avoid duplicate errors:
+  "php.validate.enable": false,
+
+  // 6) (Optional) Auto-fix with phpcbf on save and set it as the default formatter for PHP:
+  "[php]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "obliviousharmony.vscode-php-codesniffer",
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
+  "intelephense.environment.includePaths": [
+    // index both the includes & admin folders so you get all functions:
+    "/Users/glennyabellana/Local Sites/wealtheliteadvisors/app/public/wp-includes",
+    "/Users/glennyabellana/Local Sites/wealtheliteadvisors/app/public/wp-admin"
+  ]
+}

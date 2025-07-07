@@ -1,0 +1,1 @@
+/* empty css              */function o(){document.querySelector(".menu-toggle").addEventListener("click",()=>{document.body.classList.toggle("nav-open")})}console.log("Vite + Tailwind is live 🎉");console.log("Theme scripts loaded");o();console.log("HELLLOOOOOOOOWWW!!!");console.log("WOOOORLLLDD!!!");

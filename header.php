@@ -24,36 +24,23 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wealthelite-advisors' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$wealthelite_advisors_description = get_bloginfo( 'description', 'display' );
-			if ( $wealthelite_advisors_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $wealthelite_advisors_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
+	<header id="masthead" class="site-header p-4 pb-0 lg:pt-8">
+		<div class="site-branding container mx-auto">
+			<div class="block sm:flex items-baseline justify-between px-8 lg:px-12">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center w-[15rem] lg:w-[30rem] h-[4rem]">
+					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Logo1b.svg" alt="WealthEliteAdvisors Logo" class="w-full">
+				</a>
+				<nav id="site-navigation" class="main-navigation relative md:-top-[2rem]">
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wealthelite-advisors' ); ?></button>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+						)
+					);
+					?>
+				</nav><!-- #site-navigation -->
+			</div>
 		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wealthelite-advisors' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

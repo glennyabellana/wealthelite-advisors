@@ -138,16 +138,139 @@ add_action( 'widgets_init', 'wealthelite_advisors_widgets_init' );
  * Enqueue scripts and styles.
  */
 function wealthelite_advisors_scripts() {
-	wp_enqueue_style( 'wealthelite-advisors-style', get_stylesheet_uri(), array(), _S_VERSION );
+	// Theme version defined in functions.php.
+	$version = _S_VERSION;
+
+	// Enqueue Google Fonts.
+	wp_enqueue_style(
+		'wealthelite-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+		array(),
+		$version
+	);
+
+	// Main stylesheet.
+	wp_enqueue_style(
+		'wealthelite-advisors-style',
+		get_stylesheet_uri(),
+		array(),
+		$version
+	);
 	wp_style_add_data( 'wealthelite-advisors-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'wealthelite-advisors-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	// Navigation script.
+	wp_enqueue_script(
+		'wealthelite-advisors-navigation',
+		get_template_directory_uri() . '/js/navigation.js',
+		array(),
+		$version,
+		true
+	);
 
+	// Threaded comments support.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	// DEV mode: load from Vite dev server.
+	if ( defined( 'WP_ENV' ) && 'development' === WP_ENV ) {
+		wp_enqueue_script( 'vite-client', 'http://localhost:3000/@vite/client', array(), null, true );
+		wp_enqueue_script( 'theme-dev', 'http://localhost:3000/js/index.js', array(), null, true );
+		return;
+	}
+
+	// PROD mode: hashed assets via Vite manifest.
+	$theme_dir = get_stylesheet_directory();
+	$theme_uri = get_stylesheet_directory_uri();
+	$manifest  = wealthelite_advisors_get_manifest( $theme_dir );
+	$entry_key = 'js/index.js';
+
+	if ( empty( $manifest[ $entry_key ]['file'] ) ) {
+		return;
+	}
+
+	$entry = $manifest[ $entry_key ];
+
+	// Enqueue hashed JS bundle.
+	wp_enqueue_script(
+		'theme-main',
+		"{$theme_uri}/dist/{$entry['file']}",
+		array(),
+		$version,
+		true
+	);
+
+	// Enqueue any hashed CSS chunks.
+	if ( ! empty( $entry['css'] ) && is_array( $entry['css'] ) ) {
+		foreach ( $entry['css'] as $css_file ) {
+			wp_enqueue_style(
+				'theme-style-' . sanitize_title( $css_file ),
+				"{$theme_uri}/dist/{$css_file}",
+				array(),
+				$version
+			);
+		}
+	}
 }
 add_action( 'wp_enqueue_scripts', 'wealthelite_advisors_scripts' );
+
+/**
+ * Load and decode the Vite manifest.json.
+ *
+ * @param string $theme_dir Absolute path to the theme directory.
+ * @return array            Decoded manifest, or empty array on failure.
+ */
+function wealthelite_advisors_get_manifest( $theme_dir ) {
+	$manifest_path = trailingslashit( $theme_dir ) . 'dist/.vite/manifest.json';
+
+	if ( ! file_exists( $manifest_path ) ) {
+		return array();
+	}
+
+	$content = file_get_contents( $manifest_path );
+	if ( false === $content ) {
+		return array();
+	}
+
+	$data = json_decode( $content, true );
+	return is_array( $data ) ? $data : array();
+}
+
+/**
+ * Filters the script tag for specific handles to add type="module".
+ *
+ * @param string $tag    The script tag for the enqueued script.
+ * @param string $handle The script's registered handle.
+ * @return string Modified script tag.
+ */
+function wealthelite_advisors_script_loader_tag( $tag, $handle ) {
+	if ( in_array( $handle, array( 'vite-client', 'theme-dev' ), true ) ) {
+		$tag = str_replace( '<script ', '<script type="module" ', $tag );
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', 'wealthelite_advisors_script_loader_tag', 10, 2 );
+
+/**
+ * Add preconnect hints for Google Fonts to <head>.
+ *
+ * @return void
+ */
+function wealthelite_preconnect_google_fonts() {
+	// Pre-connect to Google Fonts domains.
+	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}
+add_action( 'wp_head', 'wealthelite_preconnect_google_fonts', 1 );
+
+/**
+ * Enqueue the Poppins font from Google Fonts.
+ *
+ * @return void
+ */
+function wealthelite_enqueue_google_fonts() {
+}
+add_action( 'wp_enqueue_scripts', 'wealthelite_enqueue_google_fonts' );
 
 /**
  * Implement the Custom Header feature.

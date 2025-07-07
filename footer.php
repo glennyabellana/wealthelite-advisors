@@ -10,22 +10,29 @@
  */
 
 ?>
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wealthelite-advisors' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'wealthelite-advisors' ), 'WordPress' );
-				?>
+	<footer id="colophon" class="site-footer container mx-auto bg-black rounded-3xl sm:py-[3.2rem] px-[2rem] lg:px-[4rem]">
+		<div class="site-info flex flex-col sm:flex-row items-baseline justify-between pb-5 lg:pb-10">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center">
+				<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/footer-logo.svg" alt="WealthEliteAdvisors Logo" class="h-[3rem]">
 			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'wealthelite-advisors' ), 'wealthelite-advisors', '<a href="http://underscores.me/">Glenny Abellana</a>' );
-				?>
-		</div><!-- .site-info -->
+			<nav class="main-navigation">
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'footer-menu',
+					'menu_class'     => 'footer-menu center',
+				)
+			);
+			?>
+			</nav>
+		</div>
+		<!-- Copyright -->
+		<p class="copyright mt-10 text-center text-sm text-gray-400">
+			&copy; <?php echo esc_html( gmdate( 'Y' ) . '· WealthEliteAdvisors · All Rights Reserved ·' ); ?>
+		</p>
 	</footer><!-- #colophon -->
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

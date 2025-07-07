@@ -1,0 +1,74 @@
+// Define a reusable path for your theme’s image assets
+$assets-image-path: '../../../assets/images';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Global element styles ===== */
+@layer base {
+    body {
+        @apply font-poppins bg-bgmain text-base lg:text-lg;
+    }
+    button {
+        @apply rounded-btn bg-secondary text-white px-[40px] py-[20px] text-lg border-0 transition-colors duration-150 font-medium;
+
+        &:hover,
+        &:focus {
+            @apply text-primary text-white outline-none;
+        }
+    }
+}
+
+/* — navigation component styles — */
+@layer components {
+    .main-navigation {
+
+        ul {
+            @apply block sm:flex;
+        }
+
+        a {
+            @apply text-navlink px-4 py-2 transition-colors duration-150 font-medium border-b-2 border-transparent sm:text-sm lg:text-lg;
+
+            &:hover,
+            &:focus {
+                @apply text-primary outline-none border-primary;
+            }
+
+            &[aria-current="page"] {
+                @apply text-primary border-primary;
+            }
+        }
+    }
+
+    .hero-banner:before {
+        content: '';
+        background-color: black;
+        height: 100%;
+        width: 100%;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .footer-menu {
+
+        a {
+            @apply text-white visited:text-white;
+
+            &:hover,
+            &:focus {
+                @apply text-primary outline-none;
+            }
+        }
+    }
+
+    .site-main {
+        // @apply max-w-7xl mx-auto px-6 lg:px-8;
+        @apply container mx-auto px-6 lg:px-8;
+    }
+}
+
+/* ===== Custom styles ===== */
