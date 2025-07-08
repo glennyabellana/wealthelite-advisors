@@ -10,27 +10,29 @@
  */
 
 ?>
-	<footer id="colophon" class="site-footer container mx-auto bg-black rounded-3xl sm:py-[3.2rem] px-[2rem] lg:px-[4rem]">
-		<div class="site-info flex flex-col sm:flex-row items-baseline justify-between pb-5 lg:pb-10">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center">
-				<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/footer-logo.svg" alt="WealthEliteAdvisors Logo" class="h-[3rem]">
-			</a>
-			<nav class="main-navigation">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'footer-menu',
-					'menu_class'     => 'footer-menu center',
-				)
-			);
-			?>
-			</nav>
+	<footer id="colophon" class="site-footer">
+		<div class="container mx-auto bg-black rounded-3xl p-[2rem] md:p-[5rem]">
+			<div class="site-info max-w-7xl mx-auto flex flex-col text-center md:flex-row items-center md:items-baseline justify-center md:justify-between pb-5 lg:pb-10">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center">
+					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/footer-logo.svg" alt="WealthEliteAdvisors Logo" class="h-[3rem]">
+				</a>
+				<nav class="main-navigation">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'menu-1',
+						'menu_id'        => 'footer-menu',
+						'menu_class'     => 'footer-menu center flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-4 lg:space-x-8 rtl:space-x-reverse md:mt-0',
+					)
+				);
+				?>
+				</nav>
+			</div>
+			<!-- Copyright -->
+			<p class="copyright md:mt-10 text-center text-sm text-gray-400">
+				&copy; <?php echo esc_html( gmdate( 'Y' ) . '· WealthEliteAdvisors · All Rights Reserved ·' ); ?>
+			</p>
 		</div>
-		<!-- Copyright -->
-		<p class="copyright mt-10 text-center text-sm text-gray-400">
-			&copy; <?php echo esc_html( gmdate( 'Y' ) . '· WealthEliteAdvisors · All Rights Reserved ·' ); ?>
-		</p>
 	</footer><!-- #colophon -->
 
 </div><!-- #page -->

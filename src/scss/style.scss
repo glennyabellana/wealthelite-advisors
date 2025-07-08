@@ -10,13 +10,17 @@ $assets-image-path: '../../../assets/images';
     body {
         @apply font-poppins bg-bgmain text-base lg:text-lg;
     }
+    a:visited {
+        color: inherit;
+    }
     button {
-        @apply rounded-btn bg-secondary text-white px-[40px] py-[20px] text-lg border-0 transition-colors duration-150 font-medium;
+        @apply border-0;
+        // @apply rounded-btn bg-secondary text-white px-[40px] py-[20px] text-lg border-0 transition-colors duration-150 font-medium;
 
-        &:hover,
-        &:focus {
-            @apply text-primary text-white outline-none;
-        }
+        // &:hover,
+        // &:focus {
+        //     @apply text-primary text-white outline-none;
+        // }
     }
 }
 
@@ -29,28 +33,39 @@ $assets-image-path: '../../../assets/images';
         }
 
         a {
-            @apply text-navlink px-4 py-2 transition-colors duration-150 font-medium border-b-2 border-transparent sm:text-sm lg:text-lg;
+            @apply text-navlink transition-colors duration-300 font-medium sm:text-sm lg:text-lg;
 
             &:hover,
             &:focus {
-                @apply text-primary outline-none border-primary;
+                @apply text-primary outline-none;
             }
 
             &[aria-current="page"] {
-                @apply text-primary border-primary;
+                @apply text-primary;
             }
         }
     }
 
-    .hero-banner:before {
-        content: '';
-        background-color: black;
-        height: 100%;
-        width: 100%;
-        opacity: 0.3;
-        position: absolute;
-        top: 0;
-        left: 0;
+    .mobile-menu {
+
+        a {
+            @apply text-bgmain hover:text-navlink focus:text-navlink transition-colors duration-300;
+        }
+    }
+
+    .hero-banner {
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        &:before {
+            content: '';
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 
     .footer-menu {
@@ -65,9 +80,10 @@ $assets-image-path: '../../../assets/images';
         }
     }
 
-    .site-main {
+    .site-main,
+    .site-footer {
         // @apply max-w-7xl mx-auto px-6 lg:px-8;
-        @apply container mx-auto px-6 lg:px-8;
+        @apply px-4 py-0;
     }
 }
 
