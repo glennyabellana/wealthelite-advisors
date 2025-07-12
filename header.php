@@ -26,7 +26,7 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wealthelite-advisors' ); ?></a>
 	<header id="masthead" class="site-header mb-4 p-4 pb-0 lg:pt-8 lg:mb-[3.25rem]">
 		<nav class="site-branding container mx-auto">
-			<div class="max-w-7xl flex flex-wrap items-center sm:items-baseline justify-between mx-auto">
+			<div class="max-w-7xl flex flex-wrap items-center sm:items-end justify-between mx-auto">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center space-x-3 rtl:space-x-reverse w-[16rem] sm:w-[20rem] lg:w-[25rem] h-[4.5rem]">
 					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Logo1b.svg" alt="WealthEliteAdvisors Logo" class="w-full h-full object-cover">
 				</a>
@@ -38,7 +38,7 @@
 							d="M4 6h16M4 12h16M4 18h16" />
 					</svg>
 				</button>
-				<div id="site-navigation" class="main-navigation hidden md:block w-full md:block md:w-auto" id="navbar-default">
+				<div class="main-navigation hidden md:block w-full md:block md:w-auto" id="navbar-default">
 					<?php
 					wp_nav_menu(
 						array(
@@ -51,4 +51,23 @@
 				</div>
 			</div>
 		</nav><!-- .site-branding -->
+
+		<!-- Mobile navigation overlay -->
+		<nav id="mobile-nav-overlay"
+			class="fixed inset-0 z-50 bg-primary flex flex-col items-center justify-center transition opacity-0 pointer-events-none md:hidden">
+			<button id="mobile-nav-close" class="absolute top-10 right-4 text-bgmain transition hover:text-opacity-80 focus:outline-none" aria-label="Close navigation">
+				<svg class="size-8 sm:size-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'mobile-menu',
+					'menu_class'     => 'mobile-menu flex flex-col space-y-8 text-2xl font-semibold',
+				)
+			);
+			?>
+		</nav>
 	</header><!-- #masthead -->

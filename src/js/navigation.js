@@ -8,13 +8,13 @@ export function initMobileNavigation() {
 
 	function openMenu() {
 		overlay.classList.remove('opacity-0', 'pointer-events-none');
-		overlay.classList.add('opacity-100');
+		overlay.classList.add('opacity-100', 'mobile-nav-overlay--open');
 		body.classList.add('overflow-hidden');
 		openBtn.setAttribute('aria-expanded', 'true');
 	}
 
 	function closeMenu() {
-		overlay.classList.remove('opacity-100');
+		overlay.classList.remove('opacity-100', 'mobile-nav-overlay--open');
 		overlay.classList.add('opacity-0', 'pointer-events-none');
 		body.classList.remove('overflow-hidden');
 		openBtn.setAttribute('aria-expanded', 'false');

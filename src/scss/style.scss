@@ -46,10 +46,40 @@ $assets-image-path: '../../../assets/images';
         }
     }
 
+//     .mobile-nav-overlay {
+//         // @apply w-0 opacity-0 top-0 right-0 h-full transition-[right] duration-300 ease-in-out;
+//         @apply w-0 opacity-100 right-0 top-0 h-full;
+//         transition: all 500ms ease-out;
+// //         transition-delay: 1s, 500ms;
+// // transition-property: width, opacity;
+//         #mobile-nav-close,
+//         .menu-menu-container {
+//             @apply hidden opacity-0;
+//         }
+
+//     }
+
+    // .mobile-nav-overlay--open {
+    //     @apply w-[20rem] right-0;
+    //     transition: width 500ms ease-in;
+
+    //     #mobile-nav-close,
+    //     .menu-menu-container {
+    //         @apply block opacity-100;
+    //     }
+    // }
+
     .mobile-menu {
 
         a {
             @apply text-bgmain hover:text-navlink focus:text-navlink transition-colors duration-300;
+
+            // &:after {
+            //     @apply content-[''] block h-[3px] w-0 bg-bgmain transition-[width] duration-300 hover:w-10;
+            // }
+            &[aria-current="page"] {
+                @apply text-navlink;
+            }
         }
     }
 
