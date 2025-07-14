@@ -1,0 +1,5 @@
+@layer components {
+    .copyright a {
+        @apply text-bgmain transition-colors;
+    }
+}

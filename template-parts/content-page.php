@@ -10,36 +10,27 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="hero-container container mx-auto relative">
-		<div class="container mx-auto relative min-h-[300px] max-h-[700px] h-[calc(100vh-100px)]">
-			<div class="hero-banner overflow-hidden absolute rounded-[3.125rem] h-full w-full">
-				<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/home-hero-banner.png" class="bg-cover bg-center object-cover h-full w-full" alt="Wealth Elite Advisors Hero Background">
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="hero-container container mx-auto relative">
+			<div class="container mx-auto relative h-full">
+				<?php wealthelite_advisors_post_thumbnail(); ?>
+				<div class="hero hero-content overflow-hidden relative z-10 flex flex-col items-start justify-end p-10 md:pb-[12rem] md:pl-[6rem]"></div>
 			</div>
+			<!-- Decorative shapes -->
+			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-left.svg" alt="" class="hidden md:block absolute -bottom-[8rem] -left-[12rem] w-[20rem] lg:-bottom-[10rem] lg:-left-[12rem] lg:w-[25rem] h-auto">
+		</div><!-- /.hero-container -->
+	<?php endif; ?>
 
-			<!-- <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-right.svg"
-			alt=""
-			class="hidden md:block absolute bottom-0 -right-16 w-40 h-auto transform -rotate-6"> -->
-
-			<!-- Front Page Hero Content -->
-
-			<div class="hero hero-content relative z-10 px-8 lg:px-12 h-full w-full absolute flex flex-col items-center justify-center text-center">
-				<h1 class="text-4xl sm:text-5xl font-medium text-white mb-6"><?php the_title(); ?></h1>
-				<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>"
-					class="inline-block opacity-90 bg-secondary hover:opacity-100 hover:text-white visited:text-white text-white font-medium py-3 px-8 rounded-full transition">
-					Talk to an Advisor
-				</a>
-			</div>
+	<header class="page-header text-center py-[6.25rem] lg:px-10">
+		<div class="container mx-auto">
+			<?php the_title( '<h1 class="entry-title text-title">', '</h1>' ); ?>
+			<p class="py-[3rem] px-[4.5rem] text-2xl">Wealth Elite has experienced associates throughout Canada who can assist you in reaching your financial goals. You can have one of our highly trained and licensed agents meet with creating a personalized financial pathway that meets your family’s unique needs and goals. Contact us to arrange a free, no-obligation meeting with an Experior associate in your area. We’ll assist you in getting the insurance coverage you need, investments that work for you in your financial situation and so much more.</p>
 		</div>
-		<!-- Decorative shapes -->
-		<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-left.svg" alt="" class="hidden md:block absolute -bottom-[12rem] -left-[20rem] w-[30rem] h-auto">
-	</div><!-- #main -->
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	</header><!-- /.page-header -->
 
-	<?php wealthelite_advisors_post_thumbnail(); ?>
 
-	<div class="entry-content">
+
+	<div class="entry-content container">
 		<?php
 		the_content();
 
@@ -53,7 +44,7 @@
 	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
+		<footer class="entry-footer container">
 			<?php
 			edit_post_link(
 				sprintf(

@@ -1,0 +1,10 @@
+@layer components {
+    .site-main,
+    .site-footer {
+        @apply px-4 py-0;
+    }
+
+    .site-footer {
+        @apply mb-12 text-bgmain;
+    }
+}

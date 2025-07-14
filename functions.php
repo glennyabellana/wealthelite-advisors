@@ -141,22 +141,25 @@ function wealthelite_advisors_scripts() {
 	// Theme version defined in functions.php.
 	$version = _S_VERSION;
 
+	/*
 	// Enqueue Google Fonts.
-	wp_enqueue_style(
-		'wealthelite-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
-		array(),
-		$version
-	);
+	// wp_enqueue_style(
+	// 'wealthelite-google-fonts',
+	// 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+	// array(),
+	// $version
+	// );
+
 
 	// Main stylesheet.
-	wp_enqueue_style(
-		'wealthelite-advisors-style',
-		get_stylesheet_uri(),
-		array(),
-		$version
-	);
-	wp_style_add_data( 'wealthelite-advisors-style', 'rtl', 'replace' );
+	// wp_enqueue_style(
+	// 'wealthelite-advisors-style',
+	// get_stylesheet_uri(),
+	// array(),
+	// $version
+	// );
+	// wp_style_add_data( 'wealthelite-advisors-style', 'rtl', 'replace' );
+	*/
 
 	// Navigation script.
 	wp_enqueue_script(
@@ -252,25 +255,19 @@ function wealthelite_advisors_script_loader_tag( $tag, $handle ) {
 add_filter( 'script_loader_tag', 'wealthelite_advisors_script_loader_tag', 10, 2 );
 
 /**
- * Add preconnect hints for Google Fonts to <head>.
+ * Preconnect & preload the Adobe Fonts kit.
  *
  * @return void
  */
-function wealthelite_preconnect_google_fonts() {
-	// Pre-connect to Google Fonts domains.
-	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+function wealthelite_preconnect_adobe_fonts() {
+	// Preconnect to the kit CSS host.
+	echo '<link rel="preconnect" href="https://use.typekit.net">' . "\n";
+	// Preconnect to the font‐file CDN (with CORS).
+	echo '<link rel="preconnect" href="https://p.typekit.net" crossorigin>' . "\n";
+	// Preload the kit CSS, then swap it into a stylesheet on load.
+	echo '<link rel="preload" as="style" href="https://use.typekit.net/odm7dfi.css" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
 }
-add_action( 'wp_head', 'wealthelite_preconnect_google_fonts', 1 );
-
-/**
- * Enqueue the Poppins font from Google Fonts.
- *
- * @return void
- */
-function wealthelite_enqueue_google_fonts() {
-}
-add_action( 'wp_enqueue_scripts', 'wealthelite_enqueue_google_fonts' );
+add_action( 'wp_head', 'wealthelite_preconnect_adobe_fonts', 1 );
 
 /**
  * Implement the Custom Header feature.
@@ -298,4 +295,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-

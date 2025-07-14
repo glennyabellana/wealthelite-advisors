@@ -24,7 +24,7 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wealthelite-advisors' ); ?></a>
-	<header id="masthead" class="site-header mb-4 p-4 pb-0 lg:pt-8 lg:mb-[3.25rem]">
+	<header id="masthead" class="site-header p-4 pb-4 lg:pt-8 lg:pb-[3.25rem]">
 		<nav class="site-branding container mx-auto">
 			<div class="max-w-7xl flex flex-wrap items-center sm:items-end justify-between mx-auto">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center space-x-3 rtl:space-x-reverse w-[16rem] sm:w-[20rem] lg:w-[25rem] h-[4.5rem]">
@@ -65,7 +65,7 @@
 				array(
 					'theme_location' => 'menu-1',
 					'menu_id'        => 'mobile-menu',
-					'menu_class'     => 'mobile-menu flex flex-col space-y-8 text-2xl font-semibold',
+					'menu_class'     => 'mobile-menu flex flex-col space-y-6 text-2xl',
 				)
 			);
 			?>

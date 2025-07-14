@@ -1,11 +1,14 @@
-// Define a reusable path for your theme’s image assets
-$assets-image-path: '../../../assets/images';
+@use "variables/paths";
+@use "base";
+@use "components";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ===== Global element styles ===== */
+
+
+/* ===== Global element styles =====
 @layer base {
     body {
         @apply font-poppins bg-bgmain text-base lg:text-lg;
@@ -23,8 +26,9 @@ $assets-image-path: '../../../assets/images';
         // }
     }
 }
+*/
 
-/* — navigation component styles — */
+/* — navigation component styles —
 @layer components {
     .main-navigation {
 
@@ -116,5 +120,6 @@ $assets-image-path: '../../../assets/images';
         @apply px-4 py-0;
     }
 }
+*/
 
 /* ===== Custom styles ===== */

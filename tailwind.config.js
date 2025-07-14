@@ -13,15 +13,15 @@ export default {
 				primary: '#D2A82B',
 				secondary: '#D1A92A',
 				navlink: '#121212',
+				cream: '#FDF9ED',
+				'gray-light': '#F4F4F4',
+				'gray-dark': '#717171',
 			},
 			borderRadius: {
 				btn: '32.5px',
 			},
 			fontFamily: {
-				// adds a new “poppins” key
-				poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
-				// optionally override the default sans:
-				// sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+				gotham: ['gotham', ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},

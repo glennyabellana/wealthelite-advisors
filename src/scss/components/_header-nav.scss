@@ -1,0 +1,22 @@
+@layer components {
+    .site-header {
+        @apply bg-bgmain;
+    }
+
+    .main-navigation ul {
+        @apply block sm:flex;
+    }
+
+    .main-navigation a {
+        @apply text-navlink transition-colors duration-300 font-medium sm:text-sm lg:text-lg;
+
+        &:hover,
+        &:focus {
+            @apply text-primary outline-none;
+        }
+
+        &[aria-current="page"] {
+            @apply text-primary;
+        }
+    }
+}

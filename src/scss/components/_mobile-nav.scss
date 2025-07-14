@@ -1,0 +1,9 @@
+@layer components {
+    .mobile-menu a {
+        @apply text-bgmain font-medium hover:text-navlink focus:text-navlink transition-colors duration-300;
+
+        &[aria-current="page"] {
+            @apply text-navlink;
+        }
+    }
+}

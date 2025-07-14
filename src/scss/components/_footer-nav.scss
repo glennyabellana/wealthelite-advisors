@@ -1,0 +1,10 @@
+@layer components {
+    .footer-menu a {
+        @apply text-white visited:text-white;
+
+        &:hover,
+        &:focus {
+            @apply text-primary outline-none;
+        }
+    }
+}
