@@ -1,0 +1,21 @@
+<svg width="84.357422" height="67.255127" viewBox="0 0 84.3574 67.2551" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs/>
+	<mask id="mask1_321" mask-type="alpha" maskUnits="userSpaceOnUse" x="0.000000" y="0.000000" width="84.357422" height="67.255127">
+		<g style="mix-blend-mode:normal">
+			<rect id="Rectangle 35" width="84.357040" height="67.255035" fill="#D2A82B" fill-opacity="1.000000"/>
+		</g>
+	</mask>
+	<g mask="url(#mask1_321)">
+		<g style="mix-blend-mode:normal">
+			<path id="Path 162" d="M0 33.33L0.57 32.67C13.02 22.98 24.68 11.82 37.14 2.2C40.24 -0.19 42.92 -0.97 46.35 1.54L58.79 11.92L58.79 1.79C58.79 1.05 59.63 0.3 60.35 0.22C63.59 -0.17 67.57 0.52 70.9 0.22C71.49 0.28 71.93 0.73 72.2 1.22L72.32 23.17L83.74 32.67C84.42 33.38 84.53 34.12 84.09 35C83.86 35.47 81.23 38.66 80.8 39.03C79.69 39.99 78.63 39.67 77.65 38.75L42.23 9.27L41.73 9.44L5.72 39.46C4.94 39.77 4.21 39.58 3.58 39.09L0 34.81L0 33.33Z" fill="#D2A82B" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+	<g mask="url(#mask1_321)">
+		<g style="mix-blend-mode:normal">
+			<path id="Path 163" d="M14.73 67.25C13.54 67.07 12.08 65.62 12.02 64.37L12.05 38.3L42.09 13.57L72.26 38.3L72.29 64.37C72.36 65.47 70.57 67.25 69.57 67.25L48.74 67.25L48.74 47.16L35.57 47.16L35.57 67.25L14.73 67.25Z" fill="#D2A82B" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+</svg>

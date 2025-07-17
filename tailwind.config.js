@@ -5,6 +5,7 @@ export default {
 		'./template-parts/**/*.php',
 		'./src/js/**/*.{js,jsx}',
 		'./src/scss/**/*.{scss,css}',
+		// './blocks/**/*.css',
 	],
 	theme: {
 		extend: {
@@ -19,6 +20,7 @@ export default {
 			},
 			borderRadius: {
 				btn: '32.5px',
+				primary: '3.125rem',
 			},
 			fontFamily: {
 				gotham: ['gotham', ...defaultTheme.fontFamily.sans],

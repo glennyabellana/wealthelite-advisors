@@ -1,10 +1,6 @@
 @layer base {
     body {
-        @apply font-gotham font-light bg-bgmain text-gray-dark text-base lg:text-lg;
-    }
-
-    a:visited {
-        color: inherit;
+        @apply font-gotham font-light bg-bgmain text-gray-dark text-base sm:text-lg;
     }
 
     button {

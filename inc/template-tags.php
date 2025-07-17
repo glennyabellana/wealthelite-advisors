@@ -125,12 +125,12 @@ if ( ! function_exists( 'wealthelite_advisors_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
+			<div class="post-thumbnail hero-banner overflow-hidden absolute rounded-primary h-full w-full">
 				<?php
 				the_post_thumbnail(
 					'full',
 					array(
-						'class' => 'bg-cover bg-center object-cover h-full w-full',
+						'class' => 'object-cover h-full w-full',
 					)
 				);
 				?>

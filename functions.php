@@ -295,3 +295,36 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+
+
+
+
+/**
+ * Load the most specific page template based on slug, with sensible fallbacks.
+ */
+function we_load_page_template_by_slug() {
+	$slug          = sanitize_title( get_post_field( 'post_name' ) ?: 'default' );
+	$template_name = "page-{$slug}";
+	$partials      = array(
+		"template-parts/content-{$template_name}.php",
+		'template-parts/content-page.php',
+		'template-parts/content.php',
+	);
+	locate_template( $partials, true );
+}
+
+
+
+
+
+add_action( 'init', 'register_acf_blocks' );
+function register_acf_blocks() {
+    register_block_type( __DIR__ . '/blocks/testimonial' );
+}
+// function my_remove_editor_support_for_scf() {
+//     // remove support for the content editor entirely
+//     remove_post_type_support( 'page', 'editor' );
+// }
+// add_action( 'init', 'my_remove_editor_support_for_scf', 11 );

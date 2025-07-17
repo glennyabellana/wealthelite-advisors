@@ -1,5 +1,5 @@
 @layer components {
     .btn-primary {
-        @apply inline-block bg-secondary hover:text-white hover:bg-opacity-90 visited:text-white text-white font-medium py-3 px-8 rounded-full transition;
+        @apply inline-block bg-secondary hover:text-white hover:bg-opacity-90 visited:text-white text-white py-3 px-8 rounded-full transition;
     }
 }
