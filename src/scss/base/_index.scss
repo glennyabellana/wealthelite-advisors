@@ -30,4 +30,8 @@
     h5 {
         @apply text-xl lg:text-2xl;
     }
+
+    b, strong {
+        @apply font-bold;
+    }
 }

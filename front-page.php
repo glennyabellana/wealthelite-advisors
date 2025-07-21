@@ -16,7 +16,7 @@ get_header();
 				</div>
 				<div class="hero hero-content">
 					<h2 class="text-title text-white mb-8">What you plan today, <br/>you shall harvest in the future</h2>
-					<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>" class="text-lg btn-primary">
+					<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>" class="btn-primary">
 						Talk to an Advisor
 					</a>
 				</div>
@@ -29,16 +29,13 @@ get_header();
 			<div class="container mx-auto">
 				<h2 class="text-title xl:pt-8 2xl:pt-0 2xl:px-[4.5rem]">Wealth Elite Helps You Bring Money To Life!</h2>
 				<p class="py-[3rem] px-4 md:px-[4.5rem] text-xl sm:text-2xl">Wealth Elite has experienced associates throughout Canada who can assist you in reaching your financial goals. You can have one of our highly trained and licensed agents meet with creating a personalized financial pathway that meets your family’s unique needs and goals. Contact us to arrange a free, no-obligation meeting with an Experior associate in your area. We’ll assist you in getting the insurance coverage you need, investments that work for you in your financial situation and so much more.</p>
-				<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>"
-				class="btn-primary">
-				Contact Us
-				</a>
+				<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>" class="btn-primary">Contact Us</a>
 			</div>
 		</header><!-- /.page-header -->
 
 		<section class="solutions pb-[6.25rem]">
 			<div class="container mx-auto relative">
-				<div class="mx-auto flex flex-col lg:flex-row gap-6 lg:gap-10">
+				<div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
 					<div class="order-2 lg:order-1 solutions--content basis-3/5">
 						<div class="bg-gray-light rounded-primary p-8 mb-8 md:mb-12 md:p-10 lg:p-12">
 							<h2 class="text-title mb-4">Solutions</h2>

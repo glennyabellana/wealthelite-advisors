@@ -21,7 +21,7 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			we_load_page_template_by_slug();
+			wealthelite_load_page_template_by_slug();
 
 
 			// get_template_part( 'template-parts/content', 'page' );
