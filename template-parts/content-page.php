@@ -14,9 +14,7 @@
 		<div class="hero-container container mx-auto relative">
 			<div class="container mx-auto relative h-full">
 				<?php wealthelite_advisors_post_thumbnail(); ?>
-				<div class="hero hero-content">
-					<h2 class="text-title text-white 2xl:max-w-3xl">Work hard for your money. Let your money work harder you.</h2>
-				</div>
+				<div class="hero hero-content"></div>
 			</div>
 			<!-- Decorative shapes -->
 			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-left.svg" alt="" class="hidden md:block absolute -bottom-[8rem] -left-[12rem] w-[20rem] lg:-bottom-[9rem] lg:-left-[14rem] lg:w-[25rem] h-auto">
@@ -26,11 +24,8 @@
 	<header class="page-header text-center py-[3rem] md:py-[6.25rem] lg:px-10">
 		<div class="container mx-auto">
 			<?php the_title( '<h1 class="entry-title text-title">', '</h1>' ); ?>
-			<p class="py-[3rem] px-4 md:px-[4.5rem] text-xl sm:text-2xl">Annually, we assess your financial protection. If you’re not where you want to be. We’ll help you get back on track with our tailored solutions. Reach out to see how we can best support you.</p>
 		</div>
 	</header><!-- /.page-header -->
-
-
 
 	<div class="entry-content container mx-auto">
 		<?php

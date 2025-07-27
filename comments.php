@@ -20,13 +20,14 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area container mx-auto pt-8 mt-8">
 
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h2 class="comments-title">
+		<span class="mt-8 block bg-primary w-[10%] h-[0.3rem]"></span>
+		<h4 class="comments-title">
 			<?php
 			$wealthelite_advisors_comment_count = get_comments_number();
 			if ( '1' === $wealthelite_advisors_comment_count ) {
@@ -36,7 +37,7 @@ if ( post_password_required() ) {
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
-				printf( 
+				printf(
 					/* translators: 1: comment count number, 2: title. */
 					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $wealthelite_advisors_comment_count, 'comments title', 'wealthelite-advisors' ) ),
 					number_format_i18n( $wealthelite_advisors_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -44,7 +45,7 @@ if ( post_password_required() ) {
 				);
 			}
 			?>
-		</h2><!-- .comments-title -->
+		</h4><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
 

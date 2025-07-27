@@ -1,0 +1,46 @@
+{
+    "key": "group_6883d335d2136",
+    "title": "Beyond The Books",
+    "fields": [
+        {
+            "key": "field_6884a1aa286f4",
+            "label": "Personal Insights",
+            "name": "beyond_the_books",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Please fill in this section with brief personal insights that reflect your personality.\r\nYou may include things like your guilty pleasures, what you’d be doing if you weren’t an accountant, or your favorite weekend hobbies.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "member"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1753522929
+}

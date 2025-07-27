@@ -1,0 +1,16 @@
+{
+  "js/index.js": {
+    "file": "assets/main-Y32mp5l1.js",
+    "name": "main",
+    "src": "js/index.js",
+    "isEntry": true,
+    "css": [
+      "assets/style-D930efPI.css"
+    ]
+  },
+  "scss/style.scss": {
+    "file": "assets/style-D930efPI.css",
+    "src": "scss/style.scss",
+    "isEntry": true
+  }
+}

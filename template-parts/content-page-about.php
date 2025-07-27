@@ -10,39 +10,43 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( has_post_thumbnail() ) : ?>
-		<div class="hero-container container mx-auto relative">
-			<div class="container mx-auto relative h-full">
-				<?php wealthelite_advisors_post_thumbnail(); ?>
-				<div class="hero hero-content"></div>
-			</div>
-			<!-- Decorative shapes -->
-			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-left.svg" alt="" class="hidden md:block absolute -bottom-[8rem] -left-[12rem] w-[20rem] lg:-bottom-[9rem] lg:-left-[14rem] lg:w-[25rem] h-auto">
-		</div><!-- /.hero-container -->
-	<?php endif; ?>
-
-	<header class="page-header text-center py-[3rem] md:py-[6.25rem] lg:px-10">
-		<div class="container mx-auto">
-			<?php the_title( '<h1 class="text-title xl:pt-8 2xl:pt-0 2xl:px-[4.5rem]">', '</h1>' ); ?>
-			<p class="py-[3rem] px-4 md:px-[4.5rem] text-xl sm:text-2xl">At Wealth Elite Advisors, we live by the golden rule: treating others with the utmost respect and integrity. As elite Life Insurance & Investments Brokers, we are committed to delivering personalized and transparent advice, always putting your best interests first.</p>
-		</div>
-	</header><!-- /.page-header -->
 
 	<section class="our-mission pb-[6.25rem]">
 		<div class="container mx-auto relative">
 			<div class="flex flex-col sm:flex-row gap-6 lg:gap-10">
-				<div class="flex-1 order-2 md:order-1 basis-3/5 bg-gray-light rounded-primary p-8 md:p-10 lg:p-[4rem]">
-					<h2 class="text-title mb-4"><?php echo esc_html( 'Our Mission' ); ?></h2>
-					<div class="our-mission__content">
-						<p class="mb-6">Our mission is to build and enhance your wealth with tailored, strategic solutions. We focus on innovative approaches that align with your goals, using our expertise to craft strategies that drive lasting success and exceed your expectations.</p>
+				<?php $mission_copy = get_field( 'our_mission_copy' ); ?>
+				<?php if ( $mission_copy ) : ?>
+					<div class="flex flex-col flex-1 order-2 md:order-1 basis-3/5 bg-gray-light rounded-primary p-8 md:p-10 lg:px-[5rem] lg:py-[6rem]
+								[&_h2]:text-title
+								[&_h2]:mb-6
+								[&_p]:mb-6">
+
+						<div class="our-mission__content">
+							<?php echo wp_kses_post($mission_copy); ?>
+						</div>
+
+						<?php if ( have_rows( 'our_mission_cta_button' ) ) : ?>
+							<?php while ( have_rows('our_mission_cta_button') ) : the_row();
+								$mission_cta_text = get_sub_field( 'our_mission_cta_text' );
+								$mission_cta_link = get_sub_field( 'our_mission_cta_link' );
+								if ( !empty( $mission_cta_link ) && ! empty( $mission_cta_text ) ) : ?>
+								<div class="mt-auto mb-6">
+									<a href="<?php echo esc_url( $mission_cta_link ); ?>" class="btn-primary mt-6 inline-block">
+										<?php echo esc_html( $mission_cta_text ); ?>
+									</a>
+								</div>
+								<?php endif;
+							endwhile; ?>
+						<?php endif; ?>
 					</div>
-					<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>" class="mt-6 btn-primary">
-						Speak with an advisor
-					</a>
-				</div>
-				<div class="flex-1 hidden sm:block order-1 md:order-2 basis-2/5">
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/about-our-mission-img.png" class="rounded-primary object-cover min-h-[16rem] h-full w-full" alt="Wealth Elite Advisors Hero Background">
-				</div>
+				<?php endif; ?>
+
+				<?php $mission_img = get_field( 'our_mission_featured_image' ); ?>
+				<?php if ( $mission_img ) : ?>
+					<div class="flex-1 hidden sm:block order-1 md:order-2 basis-2/5">
+						<?php echo wp_get_attachment_image( $mission_img, 'full', false, array( "class" => "rounded-primary object-cover min-h-[16rem] h-full w-full" ) ); ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section><!-- /.our-mission -->
@@ -50,15 +54,36 @@
 	<section class="why-us relative pb-[4rem] lg:pb-[6.25rem] before:content-[''] -mx-4 px-4 before:absolute before:bottom-0 before:left-0 before:bg-primary before:h-full before:w-full before:max-h-[15rem] before:md:max-h-[24rem]">
 		<div class="container mx-auto relative">
 			<div class="flex flex-col sm:flex-row gap-6 lg:gap-10">
-				<div class="flex-1 hidden sm:block basis-2/5">
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/about-why-choose-us-img.png" class="rounded-primary object-cover min-h-[16rem] h-full w-full" alt="Wealth Elite Advisors Hero Background">
-				</div>
-				<div class="flex-1 basis-3/5 bg-gray-light rounded-primary p-8 md:p-10 lg:p-[4rem]">
-					<h2 class="text-title mb-4"><?php echo esc_html( 'Why Choose Us' ); ?></h2>
-					<div class="our-mission__content">
-						<p class="mb-6">We understand that every financial journey is unique. Our dedicated team combines deep industry knowledge with a genuine commitment to your success, providing exceptional service and guiding you every step of the way. At Wealth Elite, we are here to turn your financial aspirations into reality.</p>
+				<?php $why_us_img = get_field( 'why_us_featured_image' ); ?>
+				<?php if ( $why_us_img ) : ?>
+					<div class="flex-1 hidden sm:block basis-2/5">
+						<?php echo wp_get_attachment_image( $why_us_img, 'full', false, array( "class" => "rounded-primary object-cover min-h-[16rem] h-full w-full" ) ); ?>
 					</div>
-				</div>
+				<?php endif; ?>
+				<?php $why_us_copy = get_field( 'why_us_copy' ); ?>
+				<?php if ( $why_us_copy ) : ?>
+					<div class="flex-1 basis-3/5 bg-gray-light rounded-primary p-8 md:p-10 lg:px-[5rem] lg:py-[6rem]
+								[&_h2]:text-title
+								[&_h2]:mb-6
+								[&_p]:mb-6">
+						<div class="why-us__content">
+							<?php echo wp_kses_post($why_us_copy); ?>
+						</div>
+						<?php if ( have_rows( 'why_us_cta_button' ) ) : ?>
+							<?php while ( have_rows('why_us_cta_button') ) : the_row();
+								$why_us_cta_text = get_sub_field( 'why_us_cta_text' );
+								$why_us_cta_link = get_sub_field( 'why_us_cta_link' );
+								if ( !empty( $mission_cta_link ) && ! empty( $why_us_cta_text ) ) : ?>
+								<div class="mt-auto mb-6">
+									<a href="<?php echo esc_url( $why_us_cta_link ); ?>" class="btn-primary mt-6 inline-block">
+										<?php echo esc_html( $why_us_cta_text ); ?>
+									</a>
+								</div>
+								<?php endif;
+							endwhile; ?>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 			<!-- Decorative shapes -->
 			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-right.svg" alt="" class="hidden md:block absolute -top-[11rem] -right-[11rem] lg:-right-[8rem] w-[20rem] lg:-top-[12.5rem] 2xl:-right-[10rem] h-auto">
@@ -67,28 +92,18 @@
 
 	<section class="core-values text-center py-[3rem] md:py-[6.25rem] lg:px-10">
 		<div class="container px-4 md:max-w-5xl xl:max-w-7xl mx-auto">
-			<h2 class="text-title text-primary pb-[3rem] xl:pt-8 2xl:pt-0 2xl:px-[4.5rem]"><?php echo esc_html( 'Core Values' ); ?></h2>
-			<p>Core values are the fundamental beliefs of a person or organization. These guiding principles dictate behavior and can help people understand the difference between right and wrong. Core values also help companies to determine if they are on the right path and fulfilling their goals by creating an unwavering guide.</p>
-			<p><strong>When choosing a company to work for or expert to help you, it is important your core values align.</strong></p>
-			<p>If your gift is <b>serving others</b>, serve them well. If you are a teacher, teach well. If your gift is to encourage others, be encouraging. If it is giving, give generously. If you have leadership ability, take the responsibility seriously.
-			And if you have a gift for showing kindness to others, do it gladly.</p>
+			<?php $core_values_title = get_field( 'core_values_title' ); ?>
+			<?php if ( $core_values_title ) : ?>
+				<h2 class="text-title text-primary uppercase pb-[3rem] xl:pt-8 2xl:pt-0 2xl:px-[4.5rem]"><?php echo esc_html( $core_values_title ); ?></h2>
+			<?php endif; ?>
+			<?php $core_values_content = get_field( 'core_values_content' ); ?>
+			<?php if ( $core_values_content ) : ?>
+			<div class="core-values__content [&_h2]:mb-6 [&_p]:mb-6 [&_strong]:text-navlink">
+				<?php echo wp_kses_post($core_values_content); ?>
+			</div>
+			<?php endif; ?>
 		</div>
 	</section><!-- /.core-values -->
-
-
-
-	<div class="entry-content container mx-auto">
-		<?php
-		the_content();
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wealthelite-advisors' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer container mx-auto">

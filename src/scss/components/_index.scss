@@ -1,10 +1,18 @@
+// Header components
 @forward "header-nav";
 @forward "mobile-nav";
-@forward "page";
+
+// Common components
 @forward "buttons";
 @forward "headings";
 @forward "hero";
+
+// Page components
+@forward "page";
 @forward "our-team";
+@forward "single-post";
+
+// Footer components
 @forward "footer-nav";
 @forward "copyright";
 

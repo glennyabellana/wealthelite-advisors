@@ -22,7 +22,7 @@
 
   // 6) (Optional) Auto-fix with phpcbf on save and set it as the default formatter for PHP:
   "[php]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.defaultFormatter": "obliviousharmony.vscode-php-codesniffer",
     "editor.insertSpaces": false,
     "editor.tabSize": 4

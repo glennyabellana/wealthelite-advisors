@@ -149,7 +149,7 @@ function wealthelite_advisors_scripts() {
 	// array(),
 	// $version
 	// );
-
+*/
 
 	// Main stylesheet.
 	// wp_enqueue_style(
@@ -159,7 +159,7 @@ function wealthelite_advisors_scripts() {
 	// $version
 	// );
 	// wp_style_add_data( 'wealthelite-advisors-style', 'rtl', 'replace' );
-	*/
+
 
 	// Navigation script.
 	wp_enqueue_script(
@@ -270,38 +270,6 @@ function wealthelite_preconnect_adobe_fonts() {
 add_action( 'wp_head', 'wealthelite_preconnect_adobe_fonts', 1 );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
-
-
-
-
-
-/**
  * Load the most specific page template based on slug, with sensible fallbacks.
  */
 function wealthelite_load_page_template_by_slug() {
@@ -315,18 +283,63 @@ function wealthelite_load_page_template_by_slug() {
 	locate_template( $partials, true );
 }
 
+/**
+ * Remove the editor support for the page post type.
+ *
+ * This is to prevent the block editor from loading on pages,
+ * allowing us to use ACF for custom page layouts.
+ */
 function wealthelite_remove_editor_support_for_scf() {
-    remove_post_type_support( 'page', 'editor' );
+	remove_post_type_support( 'page', 'editor' );
 }
 add_action( 'init', 'wealthelite_remove_editor_support_for_scf', 11 );
 
-
-
-// add_action( 'init', 'register_acf_blocks' );
-// function register_acf_blocks() {
-//     register_block_type( __DIR__ . '/blocks/testimonial' );
-// }
 /**
- * Remove support for the content editor entirely
+ * Custom template tags for this theme.
  */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
+}
+
+/**
+ * Custom ACF functions.
+ */
+require get_template_directory() . '/inc/acf-functions.php';
+
+/**
+ * Temporary: Allow SVG upload
+ */
+function allow_svg_upload($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'allow_svg_upload');
+
+// Helper: format office number as 604.687.4747
+function format_office_number( $number ) {
+    $digits = preg_replace( '/\\D/', '', $number ); // Keep only digits
+    if ( strlen( $digits ) === 10 ) {
+        return substr( $digits, 0, 3 ) . '.' . substr( $digits, 3, 3 ) . '.' . substr( $digits, 6 );
+    }
+    return $number; // fallback
+}
+
+/**
+ * Load Dashicons on the front end.
+ */
+function load_dashicons_front_end() {
+	wp_enqueue_style( 'dashicons' );
+}
+add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
+
 
