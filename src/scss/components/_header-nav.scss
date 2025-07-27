@@ -13,11 +13,11 @@
 
 
     .main-navigation a {
-        @apply text-navlink no-underline transition-colors duration-300 font-medium sm:text-sm lg:text-lg;
+        @apply text-navlink no-underline outline-none font-medium sm:text-sm lg:text-lg transition-colors duration-300;
 
-        // &:after {
-        //     @apply content-[''] block mt-2 h-[3px] w-0 bg-primary transition-all duration-300;
-        // }
+        &:after {
+            @apply content-[''] block mt-1 h-[3px] w-0 bg-primary transition-[width] duration-300;
+        }
 
         &:hover,
         &:focus {
@@ -32,9 +32,9 @@
         &[aria-current="page"] {
             @apply text-primary;
 
-            // &:after {
-            //     @apply w-full;
-            // }
+            &:after {
+                @apply w-full;
+            }
         }
     }
 }

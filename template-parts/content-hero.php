@@ -7,12 +7,12 @@
  * @package Wealth_Elite_Advisors
  */
 
-?>
-<?php
+
 // Get hero background and title
 $bg    = get_field('hero_background_image');
 $title = get_field('hero_heading');
 ?>
+
 <!-- Hero Section -->
 <div class="hero-container container mx-auto relative">
 	<div class="container mx-auto relative h-full">
@@ -49,7 +49,7 @@ $title = get_field('hero_heading');
 					$url   = get_sub_field('hero_cta_link');
 					?>
 					<?php if (!empty($url) && !empty($text)) : ?>
-						<a href="<?php echo esc_url($url); ?>" class="btn-primary">
+						<a href="<?php echo esc_url($url); ?>" class="btn-primary hover:text-bgmain hover:bg-primary hover:bg-opacity-90">
 							<?php echo esc_html($text); ?>
 						</a>
 					<?php endif; ?>

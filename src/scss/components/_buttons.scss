@@ -2,8 +2,14 @@
     .btn-primary,
     .search-submit,
     .wp-block-search__button,
+    .ff-btn-submit,
     .form-submit .submit {
-        @apply no-underline border-0 bg-secondary hover:text-white hover:bg-opacity-90 visited:text-white text-white py-3 px-8 rounded-full transition duration-500;
+        // @apply no-underline border-0 bg-secondary hover:text-white hover:bg-opacity-90 visited:text-white text-white py-3 px-8 rounded-full transition duration-500;
+        @apply cursor-pointer no-underline border-0 bg-secondary border-2 border-transparent hover:text-primary hover:border-primary hover:bg-transparent visited:text-white text-white py-3 px-8 rounded-full transition duration-500;
+    }
+
+    .ff-el-group {
+        @apply mt-[3rem];
     }
 
     .search-field {

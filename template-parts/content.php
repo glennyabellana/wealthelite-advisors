@@ -13,26 +13,26 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php wealthelite_advisors_post_thumbnail(); ?>
 
-		<header class="entry-header pt-6">
+		<header class="entry-header text-center max-w-3xl mx-auto pt-6 mb-6 md:mb-[5rem]">
 			<?php
 			if ( is_singular() ) :
-				the_title( '<h1 class="entry-title text-title">', '</h1>' );
+				the_title( '<h1 class="entry-title text-title leading-[1.5]">', '</h1>' );
 			else :
 				the_title( '<h2 class="entry-title text-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			endif;
 
 			if ( 'post' === get_post_type() ) :
 				?>
-				<div class="entry-meta text-sm my-4">
+				<div class="entry-meta text-lg font-medium my-4 flex gap-6 justify-center items-center">
 					<?php
-					wealthelite_advisors_posted_on();
 					wealthelite_advisors_posted_by();
+					wealthelite_advisors_posted_on();
 					?>
 				</div><!-- .entry-meta -->
 			<?php endif; ?>
 		</header><!-- .entry-header -->
 
-		<div class="entry-content my-10 font-normal">
+		<div class="entry-content max-w-5xl mx-auto my-10 font-normal">
 			<?php
 			the_content(
 				sprintf(
@@ -58,7 +58,7 @@
 			?>
 		</div><!-- .entry-content -->
 
-		<footer class="entry-footer entry-footer flex space-x-4 text-sm">
+		<footer class="entry-footer max-w-5xl mx-auto flex space-x-4 text-sm">
 			<?php wealthelite_advisors_entry_footer(); ?>
 		</footer><!-- .entry-footer -->
 	</article><!-- #post-<?php the_ID(); ?> -->

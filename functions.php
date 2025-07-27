@@ -141,26 +141,6 @@ function wealthelite_advisors_scripts() {
 	// Theme version defined in functions.php.
 	$version = _S_VERSION;
 
-	/*
-	// Enqueue Google Fonts.
-	// wp_enqueue_style(
-	// 'wealthelite-google-fonts',
-	// 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
-	// array(),
-	// $version
-	// );
-*/
-
-	// Main stylesheet.
-	// wp_enqueue_style(
-	// 'wealthelite-advisors-style',
-	// get_stylesheet_uri(),
-	// array(),
-	// $version
-	// );
-	// wp_style_add_data( 'wealthelite-advisors-style', 'rtl', 'replace' );
-
-
 	// Navigation script.
 	wp_enqueue_script(
 		'wealthelite-advisors-navigation',
@@ -284,15 +264,70 @@ function wealthelite_load_page_template_by_slug() {
 }
 
 /**
- * Remove the editor support for the page post type.
- *
- * This is to prevent the block editor from loading on pages,
- * allowing us to use ACF for custom page layouts.
+ * Removes editor support for the 'page' post type.
  */
-function wealthelite_remove_editor_support_for_scf() {
-	remove_post_type_support( 'page', 'editor' );
+function wealthelite_remove_editor_support_for_pages() {
+    remove_post_type_support( 'page', 'editor' );
 }
-add_action( 'init', 'wealthelite_remove_editor_support_for_scf', 11 );
+add_action( 'init', 'wealthelite_remove_editor_support_for_pages', 11 );
+
+/**
+ * Re-enables editor support for the 'contact-us' page only.
+ */
+function wealthelite_enable_editor_for_contact_us_page() {
+    global $pagenow;
+
+    // Only run in post editor screens.
+    if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow ) {
+        return;
+    }
+
+    $post_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT );
+    if ( ! $post_id ) {
+        return;
+    }
+
+    $post = get_post( $post_id );
+    if (
+        $post
+        && 'page' === $post->post_type
+        && 'contact-us' === get_post_field( 'post_name', $post_id )
+    ) {
+        add_post_type_support( 'page', 'editor' );
+    }
+}
+add_action( 'admin_init', 'wealthelite_enable_editor_for_contact_us_page', 20 );
+
+/**
+ * Temporary: Allow SVG upload
+ */
+function allow_svg_upload($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'allow_svg_upload');
+
+/**
+ * Format a phone number into format: XXX.XXX.XXXX
+ *
+ * @param string $number The phone number to format
+ * @return string Formatted phone number or original input if invalid
+ */
+function format_office_number( $number ) {
+    $digits = preg_replace( '/\\D/', '', $number ); // Keep only digits
+    if ( strlen( $digits ) === 10 ) {
+        return substr( $digits, 0, 3 ) . '.' . substr( $digits, 3, 3 ) . '.' . substr( $digits, 6 );
+    }
+    return $number; // fallback
+}
+
+/**
+ * Load Dashicons on the front end.
+ */
+function load_dashicons_front_end() {
+	wp_enqueue_style( 'dashicons' );
+}
+add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
 
 /**
  * Custom template tags for this theme.
@@ -315,31 +350,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Custom ACF functions.
  */
 require get_template_directory() . '/inc/acf-functions.php';
-
-/**
- * Temporary: Allow SVG upload
- */
-function allow_svg_upload($mimes) {
-	$mimes['svg'] = 'image/svg+xml';
-	return $mimes;
-}
-add_filter('upload_mimes', 'allow_svg_upload');
-
-// Helper: format office number as 604.687.4747
-function format_office_number( $number ) {
-    $digits = preg_replace( '/\\D/', '', $number ); // Keep only digits
-    if ( strlen( $digits ) === 10 ) {
-        return substr( $digits, 0, 3 ) . '.' . substr( $digits, 3, 3 ) . '.' . substr( $digits, 6 );
-    }
-    return $number; // fallback
-}
-
-/**
- * Load Dashicons on the front end.
- */
-function load_dashicons_front_end() {
-	wp_enqueue_style( 'dashicons' );
-}
-add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
 
 

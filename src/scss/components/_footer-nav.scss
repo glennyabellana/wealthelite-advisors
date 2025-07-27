@@ -1,7 +1,8 @@
 @layer components {
     .footer-menu a {
         // @apply text-bgmain underline decoration-transparent underline-offset-8 hover:text-primary hover:decoration-primary transition duration-300;
-        @apply text-bgmain no-underline visited:text-white hover:text-primary transition duration-300;
+        // @apply text-bgmain no-underline visited:text-white hover:text-primary transition duration-300;
+        @apply text-bgmain no-underline visited:text-white transition duration-300;
 
         // &:hover,
         // &:focus {

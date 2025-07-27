@@ -3,11 +3,6 @@
         p {
             @apply mb-4;
         }
-        .entry-content {
-            h1,h2,h3,h4,h5,h6 {
-                @apply my-4;
-            }
-        }
     }
 
     .entry-meta a {
@@ -21,6 +16,13 @@
     .nav-previous,
     .nav-next {
         @apply text-sm;
+    }
+
+    .entry-content,
+    .comments-area {
+        h1,h2,h3,h4,h5,h6 {
+            @apply my-4;
+        }
     }
 
     .comment-list li {
