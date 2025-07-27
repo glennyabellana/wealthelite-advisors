@@ -1,15 +1,15 @@
 {
   "js/index.js": {
-    "file": "assets/main-yFALi_kF.js",
+    "file": "assets/main-B-9_rY12.js",
     "name": "main",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/style-BAJRk90K.css"
+      "assets/style-DPyD-IA3.css"
     ]
   },
   "scss/style.scss": {
-    "file": "assets/style-BAJRk90K.css",
+    "file": "assets/style-DPyD-IA3.css",
     "src": "scss/style.scss",
     "isEntry": true
   }

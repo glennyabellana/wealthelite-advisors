@@ -141,6 +141,9 @@ function wealthelite_advisors_scripts() {
 	// Theme version defined in functions.php.
 	$version = _S_VERSION;
 
+	// Enqueue WordPress dashicons.
+	wp_enqueue_style( 'dashicons' );
+
 	// Navigation script.
 	wp_enqueue_script(
 		'wealthelite-advisors-navigation',
@@ -320,14 +323,6 @@ function format_office_number( $number ) {
     }
     return $number; // fallback
 }
-
-/**
- * Load Dashicons on the front end.
- */
-function load_dashicons_front_end() {
-	wp_enqueue_style( 'dashicons' );
-}
-add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
 
 /**
  * Custom template tags for this theme.
