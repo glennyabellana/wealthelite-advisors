@@ -1,16 +1,17 @@
 /*!
 Theme Name: Wealth Elite Advisors
-Theme URI: http://underscores.me/
+Theme URI: https://wealtheliteadvisors.com/
 Author: Glenny Abellana
-Author URI: http://underscores.me/
-Description: Custom theme: Wealth Elite Advisors, developed by Glenny Abellana
+Author URI: https://github.com/glennyabellana
+Description: A custom WordPress theme for Wealth Elite Advisors. Built with TailwindCSS, ACF Pro, and optimized for performance, accessibility, and scalability.
 Version: 1.0.0
-Tested up to: 5.4
-Requires PHP: 5.6
+Requires at least: 5.7
+Tested up to: 6.5
+Requires PHP: 7.4
 License: GNU General Public License v2 or later
-License URI: LICENSE
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wealthelite-advisors
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: full-site-editing, block-patterns, accessibility-ready, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, options-panel, acf, tailwindcss, responsive-layout
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.
