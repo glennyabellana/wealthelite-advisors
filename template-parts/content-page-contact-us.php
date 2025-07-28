@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<section class="page-contact-us max-w-5xl mx-auto py-[6.25rem] lg:px-10 bg-[#F4F4F4] lg:-mt-[8rem] rounded-[3rem] relative z-1">
+	<section class="page-contact-us max-w-2xl xl:max-w-5xl mx-auto py-[6.25rem] px-6 lg:px-10 bg-[#F4F4F4] mt-[3rem] md:-mt-[10rem] xl:-mt-[8rem] rounded-[3rem] relative z-1">
 		<header class="page-header text-center">
 			<div class="">
 				<?php the_title( '<h1 class="entry-title text-title">', '</h1>' ); ?>

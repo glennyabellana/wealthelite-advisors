@@ -1,15 +1,15 @@
 {
   "js/index.js": {
-    "file": "assets/main-B-9_rY12.js",
+    "file": "assets/main-BSunWpel.js",
     "name": "main",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/style-DPyD-IA3.css"
+      "assets/style-QKWzRHFV.css"
     ]
   },
   "scss/style.scss": {
-    "file": "assets/style-DPyD-IA3.css",
+    "file": "assets/style-QKWzRHFV.css",
     "src": "scss/style.scss",
     "isEntry": true
   }

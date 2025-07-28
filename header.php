@@ -27,9 +27,15 @@
 	<header id="masthead" class="site-header p-4 pb-4 lg:pt-8 lg:pb-[3.25rem]">
 		<nav class="site-branding container mx-auto">
 			<div class="max-w-7xl flex flex-wrap items-center sm:items-end justify-between mx-auto">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center space-x-3 rtl:space-x-reverse w-[16rem] sm:w-[20rem] lg:w-[25rem] h-[4.5rem]">
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Logo1b.svg" alt="WealthEliteAdvisors Logo" class="w-full h-full object-cover">
-				</a>
+				<div class="site-logo [&_a]:flex [&_a]:items-center [&_a]:space-x-3 [&_a]:rtl:space-x-reverse [&_a]:w-[16rem] sm:[&_a]:w-[20rem] lg:[&_a]:w-[25rem] [&_a]:h-[4.5rem]">
+					<?php if ( has_custom_logo() ) : ?>
+						<?php echo get_custom_logo(); ?>
+					<?php else : ?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center space-x-3 rtl:space-x-reverse w-[16rem] sm:w-[20rem] lg:w-[25rem] h-[4.5rem]">
+							<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Logo1b.svg" alt="WealthEliteAdvisors Logo" class="w-full h-full object-cover">
+						</a>
+					<?php endif; ?>
+				</div>
 				<!-- Mobile hamburger toggle -->
 				<button id="mobile-nav-toggle" class="block md:hidden text-navlink rounded-none hover:text-primary focus:outline-none transition" aria-label="Toggle navigation">
 					<span class="sr-only">Open main menu</span>

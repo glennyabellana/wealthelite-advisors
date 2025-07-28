@@ -1,0 +1,9 @@
+@layer components {
+    .ff-el-group {
+        @apply mt-[3rem];
+    }
+
+    .ff-message-success {
+        @apply text-navlink font-normal text-center underline decoration-2 decoration-primary underline-offset-8 shadow-none shadow-transparent border-0 ;
+    }
+}

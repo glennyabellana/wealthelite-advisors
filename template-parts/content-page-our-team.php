@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<section class="our-team pb-[6.25rem]">
-		<div class="our-team__list container mx-auto relative grid md:grid-cols-2 gap-x-4 gap-y-10">
+		<div class="our-team__list container mx-auto relative grid lg:grid-cols-2 gap-x-4 gap-y-10">
 			<?php
 			$latest_posts = new WP_Query( array(
 				'post_type'           => 'member',
@@ -33,13 +33,13 @@
 					$youtube   	= $socials['youtube_link'] ?? '';
 					$linkedin   = $socials['linkedin_link'] ?? '';
 			?>
-				<div class="our-team__item text-navlink flex flex-col lg:flex-row gap-4">
+				<div class="our-team__item text-navlink flex flex-col md:flex-row gap-4">
 					<div class="our-team__item-display-pic flex-1 lg:basis-1/2 overflow-hidden rounded-primary">
 						<a href="<?php the_permalink(); ?>">
 							<img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr($thumb_alt); ?>" class="rounded-primary object-cover h-full w-full transition duration-500 hover:scale-125">
 						</a>
 					</div>
-					<div class="our-team__item-content flex-1 basis-1/2 bg-gray-light rounded-primary p-8 md:p-10 lg:py-[3rem]">
+					<div class="our-team__item-content flex-1 lg:basis-1/2 bg-gray-light rounded-primary p-8 md:p-10 lg:py-[3rem]">
 						<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 						<?php if ( $license ) : ?>
 						<div class="our-team__meta font-normal">

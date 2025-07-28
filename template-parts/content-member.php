@@ -15,11 +15,6 @@ $biography   = get_field( 'member_biography' );
 // Use featured image as profile photo.
 $profile_img = get_the_post_thumbnail_url( get_the_ID(), 'full' );
 
-// Fallback image (optional).
-if ( ! $profile_img ) {
-	$profile_img = get_template_directory_uri() . '/assets/girlie-abellana.png';
-}
-
 // Member contact details group
 $contact_details = get_field( 'member_contact_details' );
 $location   = $contact_details['member_location'] ?? '';
@@ -82,45 +77,47 @@ $member_cta_button = get_field( 'cta_button' );
 			<?php endif; ?>
 		</div>
 
+		<?php if ( $profile_img ) : ?>
 		<!-- Right: Profile Image -->
 		<div class="order-1 md:order-2 flex-shrink-0 w-full max-w-sm mx-auto">
 			<div class="rounded-[2.5rem] overflow-hidden bg-gray-100 shadow-md aspect-auto">
-				<?php if ( $profile_img ) : ?>
 					<img
 						src="<?php echo esc_url( $profile_img ); ?>"
 						alt="<?php echo esc_attr( $name ? $name : 'Profile Photo' ); ?>"
 						class="w-full h-full object-cover object-top scale-125"
 					/>
-				<?php endif; ?>
+				</div>
 			</div>
 		</div>
-	</div>
+		<?php endif; ?>
 </section>
 
-<!-- Contact / Info Row -->
-<div class="container mx-auto rounded-primary bg-gray-light text-navlink p-6 md:px-[5rem] md:py-[3rem] mb-12 flex flex-col md:flex-row justify-between items-center gap-3 text-xl font-medium">
-	<?php if ( $location ) : ?>
-		<span><?php echo esc_html( $location ); ?></span>
-	<?php endif; ?>
-	<?php if ( $email ) : ?>
-		<span>
-			<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
-		</span>
-	<?php endif; ?>
-	<?php if ( $office ) : ?>
-		<span>
-			<?php echo esc_html( 'Office:' ); ?>
-			<a href="tel:<?php echo esc_attr( $office ); ?>">
-				<?php echo esc_html( format_office_number( $office ) ); ?>
-			</a>
-		</span>
-	<?php endif; ?>
-	<?php if ( $linkedin ) : ?>
-		<span>
-			<a href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( 'LinkedIn' ); ?></a>
-		</span>
-	<?php endif; ?>
-</div>
+<?php if ( $location || $email || $office || $linkedin ) : ?>
+	<!-- Contact / Info Row -->
+	<div class="container mx-auto rounded-primary bg-gray-light text-navlink p-6 md:px-[5rem] md:py-[3rem] mb-12 flex flex-col md:flex-row justify-between items-center gap-3 text-xl font-medium">
+		<?php if ( $location ) : ?>
+			<span><?php echo esc_html( $location ); ?></span>
+		<?php endif; ?>
+		<?php if ( $email ) : ?>
+			<span>
+				<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+			</span>
+		<?php endif; ?>
+		<?php if ( $office ) : ?>
+			<span>
+				<?php echo esc_html( 'Office:' ); ?>
+				<a href="tel:<?php echo esc_attr( $office ); ?>">
+					<?php echo esc_html( format_office_number( $office ) ); ?>
+				</a>
+			</span>
+		<?php endif; ?>
+		<?php if ( $linkedin ) : ?>
+			<span>
+				<a href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( 'LinkedIn' ); ?></a>
+			</span>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>
 
 <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-12 font-medium text-xl text-navlink">
 
@@ -201,7 +198,7 @@ $member_cta_button = get_field( 'cta_button' );
 		<?php endif; ?>
 
 		<?php if ( $member_cta_button ) : ?>
-				<a href="<?php echo esc_url( $member_cta_button['cta_link'] ); ?>" class="inline-block btn-primary py-[0.6rem] px-[3rem] border-2 border-bgmain bg-bgmain text-primary hover:text-bgmain hover:bg-transparent hover:border-bgmain hover:bg-opacity-100">
+				<a href="<?php echo esc_url( $member_cta_button['cta_link'] ); ?>" class="inline-block btn-primary py-[0.6rem] px-[3rem] border-2 border-bgmain bg-bgmain text-primary hover:text-bgmain hover:bg-transparent hover:border-bgmain hover:bg-opacity-100 visited:text-primary">
 					<?php echo esc_html( $member_cta_button['cta_text'] ); ?>
 				</a>
 		<?php endif; ?>
