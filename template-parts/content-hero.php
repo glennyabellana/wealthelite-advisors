@@ -57,7 +57,7 @@ $title = get_field( 'hero_heading' );
 		</div>
 	</div>
 	<!-- Decorative shapes -->
-	<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-left.svg" alt="" class="hidden md:block absolute -bottom-[7rem] -left-[8rem] w-[18rem] h-auto">
+	<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-left.svg" alt="" class="hidden md:block absolute -bottom-[7.2rem] -left-[8rem] w-[18rem] h-auto">
 </div><!-- /.hero-container -->
 
 <!-- Value Proposition Section -->

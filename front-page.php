@@ -54,10 +54,15 @@ get_header();
 							<?php endif; ?>
 						</div>
 
+						<?php $solutions_img = get_field( 'solutions_featured_image' ); ?>
+						<?php if ( $solutions_img ) : ?>
 						<!-- Static banner image -->
 						<div class="hidden sm:block order-1 lg:order-2 solutions--banner basis-2/5">
-							<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/banner-solutions.png" class="rounded-primary object-cover object-left h-[15rem] sm:h-[25rem] lg:h-full w-full" alt="Wealth Elite Advisors Hero Background">
+							<div class="flex-1 hidden sm:block basis-2/5">
+								<?php echo wp_get_attachment_image( $solutions_img, 'full', false, array( "class" => "rounded-primary object-cover object-left h-[15rem] sm:h-[25rem] lg:h-full w-full" ) ); ?>
+							</div>
 						</div>
+						<?php endif; ?>
 					</div>
 
 					<!-- Decorative shapes -->
@@ -102,7 +107,7 @@ get_header();
 						if ($latest_posts->have_posts()) :
 							while ($latest_posts->have_posts()) : $latest_posts->the_post();
 								$thumb_id = get_post_thumbnail_id();
-								$thumb_url = $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : get_template_directory_uri() . '/assets/images/banner-solutions.png';
+								$thumb_url = $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : get_template_directory_uri() . '/assets/images/about-our-mission-img.png';
 								$thumb_alt = $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '';
 						?>
 							<div class="article-item flex items-end relative rounded-primary overflow-hidden h-[20rem] sm:h-[16rem] lg:h-[28rem] p-12">
