@@ -132,15 +132,6 @@ function wealthelite_advisors_scripts() {
 	// Enqueue WordPress dashicons.
 	wp_enqueue_style( 'dashicons' );
 
-	// Navigation script.
-	wp_enqueue_script(
-		'wealthelite-advisors-navigation',
-		get_template_directory_uri() . '/js/navigation.js',
-		array(),
-		$version,
-		true
-	);
-
 	// Threaded comments support.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
