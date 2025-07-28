@@ -86,7 +86,7 @@
 				<?php endif; ?>
 			</div>
 			<!-- Decorative shapes -->
-			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-right.svg" alt="" class="hidden md:block absolute -top-[11rem] -right-[11rem] lg:-right-[8rem] w-[20rem] lg:-top-[12.5rem] 2xl:-right-[10rem] h-auto">
+			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-right.svg" alt="" class="hidden md:block absolute -top-[8rem] -right-[8rem] w-[16rem] h-auto">
 		</div>
 	</section><!-- /.why-us -->
 
