@@ -15,7 +15,7 @@
     "lint:js": "eslint \"src/js/**/*.{js,jsx}\"",
     "lint:css": "stylelint \"src/css/**/*.css\"",
     "format": "prettier --write .",
-    "zip": "zip -r ../theme.zip . -x \"node_modules/*\" \"node_modules/**\" \"node_modules\" \"dist/*\" \"dist/**\" \"dist\" \".git/*\" \".git/**\" \".git\" \".DS_Store\"",
+    "zip": "zip -r ../wealthelite-advisors.zip . -x \"node_modules/*\" \"node_modules/**\" \"node_modules\" \"dist/*\" \"dist/**\" \"dist\" \".git/*\" \".git/**\" \".git\" \".DS_Store\" \"vendor/*\" \"vendor/**\" \"vendor\"",
     "compile:sass": "sass src/scss:src/css --no-source-map"
   },
   "devDependencies": {
