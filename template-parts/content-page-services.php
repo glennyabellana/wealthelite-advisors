@@ -48,9 +48,6 @@
 
 	<section class="investment bg-primary -mx-4 pb-[6rem] px-4">
 		<div class="container mx-auto relative">
-			<!-- Decorative shapes -->
-			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-shape.svg" alt="" class="hidden md:block absolute -top-[8rem] -right-[12rem] w-[20rem] lg:-top-[10rem] lg:-right-[12rem] lg:w-[25rem] xl:w-[22rem] 2xl:-right-[17rem] h-auto">
-
 			<?php $investment_section_label = get_field('investment_section_label') ?>
 			<?php if ( $investment_section_label ) : ?>
 				<h2 class="text-title text-bgmain text-center py-[5rem]"><?php echo esc_html( $investment_section_label ); ?></h2>

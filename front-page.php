@@ -72,8 +72,6 @@ get_header();
 
 			<section class="latest-articles bg-primary relative -mx-4 pb-[5rem] px-4 lg:pb-0 lg:mb-[12rem] lg:max-h-[35rem]">
 				<div class="container mx-auto relative">
-					<!-- Decorative shapes -->
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-shape.svg" alt="" class="hidden md:block absolute -top-[8rem] -left-[12rem] w-[20rem] lg:-top-[10rem] lg:-left-[12rem] lg:w-[25rem] xl:w-[22rem] 2xl:-left-[17rem] h-auto">
 					<?php $latest_articles = get_field('articles_section_heading'); ?>
 					<?php if ( ! empty( $latest_articles ) ) : ?>
 						<h2 class="text-title text-bgmain text-center py-[5rem]"><?php echo esc_html( $latest_articles ); ?></h2>

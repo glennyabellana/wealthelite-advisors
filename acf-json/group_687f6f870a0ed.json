@@ -84,14 +84,14 @@
     "location": [
         [
             {
+                "param": "page",
+                "operator": "!=",
+                "value": "16"
+            },
+            {
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
-            },
-            {
-                "param": "page",
-                "operator": "!=",
-                "value": "17"
             }
         ]
     ],
@@ -104,5 +104,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1753628272
+    "modified": 1753769128
 }

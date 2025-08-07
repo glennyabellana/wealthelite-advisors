@@ -15,20 +15,20 @@
     "lint:js": "eslint \"src/js/**/*.{js,jsx}\"",
     "lint:css": "stylelint \"src/css/**/*.css\"",
     "format": "prettier --write .",
-    "zip": "zip -r ../wealthelite-advisors.zip . -x \"node_modules/*\" \"node_modules/**\" \"node_modules\" \"dist/*\" \"dist/**\" \"dist\" \".git/*\" \".git/**\" \".git\" \".DS_Store\" \"vendor/*\" \"vendor/**\" \"vendor\"",
+    "zip": "zip -r ../wealthelite-advisors.zip . -x \"node_modules/*\" \"node_modules/**\" \"node_modules\" \".git/*\" \".git/**\" \".git\" \".DS_Store\" \"vendor/*\" \"vendor/**\" \"vendor\"",
     "compile:sass": "sass src/scss:src/css --no-source-map"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.8.0",
-    "postcss": "^8.4.20",
+    "postcss": "^8.5.6",
     "prettier": "^2.8.8",
-    "sass": "^1.62.1",
+    "sass": "^1.90.0",
     "stylelint": "^15.0.0",
     "stylelint-config-standard": "^30.0.0",
     "stylelint-config-tailwindcss": "^1.0.0",
     "tailwindcss": "^3.4.7",
-    "vite": "^5.0.0"
+    "vite": "^5.2.10"
   }
 }

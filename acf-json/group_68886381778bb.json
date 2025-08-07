@@ -1,32 +1,11 @@
 {
-    "key": "group_6884a314b830e",
-    "title": "Member Services",
+    "key": "group_68886381778bb",
+    "title": "Request a Quote",
     "fields": [
         {
-            "key": "field_6884a33d8a459",
-            "label": "Title",
-            "name": "member_services_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6884a314b9150",
-            "label": "Member Services",
-            "name": "member_services",
+            "key": "field_6888639eeda3b",
+            "label": "Content",
+            "name": "request_a_quote_content",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -43,18 +22,39 @@
             "toolbar": "basic",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_688866b8249de",
+            "label": "Form Shortcode",
+            "name": "form_shortcode",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter a WordPress shortcode, e.g., [contact-form-7 id=\"123\"]",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 200,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page",
                 "operator": "==",
-                "value": "member"
+                "value": "16"
             }
         ]
     ],
-    "menu_order": 5,
+    "menu_order": 0,
     "position": "normal",
     "style": "default",
     "label_placement": "left",
@@ -63,5 +63,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1753709761
+    "modified": 1753769867
 }

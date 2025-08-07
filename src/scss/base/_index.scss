@@ -46,11 +46,12 @@
     input,
     textarea {
         border: 1px solid #ccc;
-        @apply px-4 py-3 rounded-[1rem] bg-bgmain text-navlink placeholder:text-navlink placeholder:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+        @apply px-4 py-3 rounded-[0.5rem] bg-bgmain text-navlink placeholder:text-navlink placeholder:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
     }
 
     select {
         border: 1px solid #ccc;
+        @apply px-4 py-3 rounded-[0.5rem] bg-bgmain text-navlink placeholder:text-navlink placeholder:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
     }
 
     textarea {

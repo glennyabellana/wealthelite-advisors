@@ -278,7 +278,7 @@ function wealthelite_enable_editor_for_contact_us_page() {
         add_post_type_support( 'page', 'editor' );
     }
 }
-add_action( 'admin_init', 'wealthelite_enable_editor_for_contact_us_page', 20 );
+// add_action( 'admin_init', 'wealthelite_enable_editor_for_contact_us_page', 20 );
 
 /**
  * Temporary: Allow SVG upload

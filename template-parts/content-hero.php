@@ -65,7 +65,7 @@ $title = get_field( 'hero_heading' );
 <?php if ( ! empty( $vp_copy ) ) : ?>
 	<header class="page-header text-center py-[3rem] md:py-[6.25rem] lg:px-10">
 		<div class="container mx-auto [&_h2]:text-title [&_h2]:pb-[1.5rem] xl:[&_h2]:pt-8 2xl:[&_h2]:pt-0 2xl:[&_h2]:px-[4.5rem] [&_p]:py-[1.5rem] [&_p]:px-4 md:[&_p]:px-[4.5rem] [&_p]:text-xl sm:[&_p]:text-2xl ">
-			<?php echo wp_kses_post( $vp_copy ); ?>
+			<?php echo apply_filters( 'the_content', do_shortcode( $vp_copy ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php if ( have_rows( 'value_proposition_cta_button' ) ) : ?>
 				<?php while ( have_rows('value_proposition_cta_button') ) : the_row();
 					$vp_cta_text = get_sub_field( 'value_proposition_cta_text' );

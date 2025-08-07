@@ -6,4 +6,8 @@
     .ff-message-success {
         @apply text-navlink font-normal text-center underline decoration-2 decoration-primary underline-offset-8 shadow-none shadow-transparent border-0 ;
     }
+
+    .fluentform .ff-el-group {
+        @apply my-6;
+    }
 }

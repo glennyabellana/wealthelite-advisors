@@ -186,9 +186,6 @@ $member_cta_button = get_field( 'cta_button' );
 
 <section class="member__cta bg-primary -mx-4 mb-6 py-[4rem] px-4">
 	<div class="max-w-7xl mx-auto relative">
-		<!-- Decorative shapes -->
-		<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/decor-shape.svg" alt="" class="hidden md:block absolute -top-[10rem] -right-[12rem] w-[20rem] lg:-top-[14rem] lg:-right-[12rem] lg:w-[25rem] xl:w-[22rem] 2xl:-right-[17rem] h-auto">
-
 		<?php if ( $member_cta_intro_copy ) : ?>
 			<h5 class="text-bgmain"><?php echo esc_html( $member_cta_intro_copy ); ?></h5>
 		<?php endif; ?>

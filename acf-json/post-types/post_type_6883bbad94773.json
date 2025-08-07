@@ -10,16 +10,16 @@
     "labels": {
         "name": "Team Members",
         "singular_name": "Member",
-        "menu_name": "Team Members",
-        "all_items": "All Team Members",
-        "edit_item": "Edit Member",
-        "view_item": "View Member",
-        "view_items": "View Team Members",
-        "add_new_item": "Add New Member",
-        "add_new": "Add New Member",
-        "new_item": "New Member",
-        "parent_item_colon": "Parent Member:",
-        "search_items": "Search Team Members",
+        "menu_name": "WealthElite Advisors",
+        "all_items": "All Advisors",
+        "edit_item": "Edit Advisor",
+        "view_item": "View Advisor",
+        "view_items": "View Advisors",
+        "add_new_item": "Add New Advisor",
+        "add_new": "Add New Advisor",
+        "new_item": "New Advisor",
+        "parent_item_colon": "Parent Advisor:",
+        "search_items": "Search Advisors",
         "not_found": "No team members found",
         "not_found_in_trash": "No team members found in Trash",
         "archives": "Member Archives",
@@ -83,5 +83,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1753554206
+    "modified": 1753760831
 }

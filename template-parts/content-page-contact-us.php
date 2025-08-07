@@ -11,13 +11,28 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<section class="page-contact-us max-w-2xl xl:max-w-5xl mx-auto py-[6.25rem] px-6 lg:px-10 bg-[#F4F4F4] mt-[3rem] md:-mt-[10rem] xl:-mt-[8rem] rounded-[3rem] relative z-1">
-		<header class="page-header text-center">
+		<header class="page-header text-center mb-6">
 			<div class="">
 				<?php the_title( '<h1 class="entry-title text-title">', '</h1>' ); ?>
 			</div>
 		</header><!-- /.page-header -->
-		<div class="entry-content">
-			<?php the_content(); ?>
+		<div class="entry-content text-center [&>p]:mb-6">
+            <?php
+                $request_quote_content = get_field('request_a_quote_content');
+                if ( ! empty( $request_quote_content ) ) {
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                    echo apply_filters( 'the_content', do_shortcode( $request_quote_content ) );
+
+                }
+            ?>
+            <div class="contact-form">
+                <?php
+                    $form_shortcode = get_field('form_shortcode');
+                    if ( $form_shortcode ) {
+                        echo do_shortcode( $form_shortcode );
+                    }
+                ?>
+            </div>
 		</div><!-- .entry-content -->
 	</section><!-- /.page-header -->
 
