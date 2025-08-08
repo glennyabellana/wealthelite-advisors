@@ -8,6 +8,22 @@
         @apply cursor-pointer no-underline border-0 bg-secondary border-2 border-transparent hover:text-primary hover:border-primary hover:bg-transparent visited:text-white text-white py-3 px-8 rounded-full transition duration-500;
     }
 
+    .btn-primary--outline {
+        @apply cursor-pointer bg-transparent text-primary border border-secondary hover:bg-secondary hover:text-white;
+    }
+
+    .btn-menu a {
+        @extend .btn-primary--outline;
+        @apply flex py-2 px-4 font-normal text-xs rounded-primary;
+
+        &:hover,
+        &:focus {
+            &:after {
+                @apply w-0;
+            }
+        }
+    }
+
     .search-field {
         @apply px-4 py-3 rounded-full bg-bgmain text-navlink placeholder:text-navlink placeholder:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
     }

@@ -8,8 +8,9 @@
  */
 
 ?>
-
-<div class="container mx-auto">
+<?php if ( is_singular( 'post' ) ) : ?>
+    <div class="container mx-auto">
+<?php endif; ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php wealthelite_advisors_post_thumbnail(); ?>
 
@@ -18,7 +19,7 @@
 			if ( is_singular() ) :
 				the_title( '<h1 class="entry-title text-title leading-[1.5]">', '</h1>' );
 			else :
-				the_title( '<h2 class="entry-title text-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2 class="entry-title text-3xl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			endif;
 
 			if ( 'post' === get_post_type() ) :
@@ -34,20 +35,24 @@
 
 		<div class="entry-content max-w-5xl mx-auto my-10 font-normal">
 			<?php
-			the_content(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wealthelite-advisors' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					wp_kses_post( get_the_title() )
-				)
-			);
+            if ( is_archive() ) :
+                the_excerpt();
+            else:
+                the_content(
+                    sprintf(
+                        wp_kses(
+                            /* translators: %s: Name of current post. Only visible to screen readers */
+                            __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wealthelite-advisors' ),
+                            array(
+                                'span' => array(
+                                    'class' => array(),
+                                ),
+                            )
+                        ),
+                        wp_kses_post( get_the_title() )
+                    )
+                );
+            endif;
 
 			wp_link_pages(
 				array(
@@ -55,11 +60,36 @@
 					'after'  => '</div>',
 				)
 			);
-			?>
+
+
+            if ( is_singular( 'post' ) ) :
+                ?>
+                <nav class="post-navigation" aria-label="<?php esc_attr_e( 'Post', 'wealthelite-advisors' ); ?>">
+                    <div class="flex justify-between gap-4 text-sm">
+                        <div class="post-navigation__prev">
+                            <?php previous_post_link(
+                                '%link',
+                                '&larr; %title'
+                            ); ?>
+                        </div>
+                        <div class="post-navigation__next text-right">
+                            <?php next_post_link(
+                                '%link',
+                                '%title &rarr;',
+                                true
+                            ); ?>
+                        </div>
+                    </div>
+                </nav>
+                <?php
+            endif;
+		?>
 		</div><!-- .entry-content -->
 
-		<footer class="entry-footer max-w-5xl mx-auto flex space-x-4 text-sm">
+		<footer class="entry-footer max-w-5xl mx-auto flex text-sm">
 			<?php wealthelite_advisors_entry_footer(); ?>
 		</footer><!-- .entry-footer -->
 	</article><!-- #post-<?php the_ID(); ?> -->
-</div>
+<?php if ( is_singular( 'post' ) ) : ?>
+    </div>
+<?php endif; ?>

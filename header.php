@@ -50,7 +50,7 @@
 						array(
 							'theme_location' => 'menu-1',
 							'menu_id'        => 'primary-menu',
-							'menu_class'     => 'flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-4 lg:space-x-8 rtl:space-x-reverse md:mt-0',
+							'menu_class'     => 'flex flex-col justify-center p-4 md:p-0 mt-4 md:flex-row md:space-x-4 lg:space-x-8 rtl:space-x-reverse md:mt-0',
 						)
 					);
 					?>

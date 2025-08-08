@@ -112,10 +112,12 @@ get_header();
 								<div class="article-thumb h-full w-full absolute top-0 left-0 z-1 before:content-[''] before:w-full before:h-full before:absolute before:bg-black before:bg-opacity-50">
 									<img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr($thumb_alt); ?>" class="object-cover h-full w-full">
 								</div>
-								<div class="article-meta relative z-10">
-									<h5 class="text-bgmain mb-4"><a href="<?php the_permalink(); ?>" class="no-underline"><?php the_title(); ?></a></h5>
-									<p class="text-bgmain mb-4 line-clamp-3"><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
-									<a href="<?php the_permalink(); ?>" class="article-readmore text-bgmain no-underline">Read more</a>
+								<div class="article-meta text-bgmain font-normal relative z-10">
+									<h5 class="text-bgmain mb-3"><a href="<?php the_permalink(); ?>" class="no-underline"><?php the_title(); ?></a></h5>
+                                    <p class="text-base font-medium mb-8"><span class="dashicons dashicons-calendar-alt text-base mx-1"></span><?php the_date( 'M Y' ); ?></p>
+									<p class="mb-4 line-clamp-3"><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
+									<a href="<?php the_permalink(); ?>" class="article-readmore text-bgmain">Read more</a>
+
 								</div>
 							</div>
 						<?php

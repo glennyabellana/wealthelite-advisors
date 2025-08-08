@@ -65,7 +65,7 @@ $member_cta_button = get_field( 'cta_button' );
 			<?php endif; ?>
 
 			<?php if ( $credentials ) : ?>
-				<h5 class="text-primary mb-8">
+				<h5 class="text-primary text-xl mb-8">
 					<?php echo esc_html( $credentials ); ?>
 				</h5>
 			<?php endif; ?>
@@ -84,7 +84,7 @@ $member_cta_button = get_field( 'cta_button' );
 					<img
 						src="<?php echo esc_url( $profile_img ); ?>"
 						alt="<?php echo esc_attr( $name ? $name : 'Profile Photo' ); ?>"
-						class="w-full h-full object-cover object-top scale-125"
+						class="w-full h-full object-cover object-top"
 					/>
 				</div>
 			</div>

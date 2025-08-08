@@ -7,16 +7,18 @@
  * @package Wealth_Elite_Advisors
  */
 
+$member_grid = ! ( has_multiple_members() ) ? 'lg:grid-cols-1 lg:max-w-5xl' : 'lg:grid-cols-2';
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<section class="our-team pb-[6.25rem]">
-		<div class="our-team__list container mx-auto relative grid lg:grid-cols-2 gap-x-4 gap-y-10">
+
+		<div class="our-team__list container mx-auto relative grid gap-x-4 gap-y-10 <?php echo esc_attr( $member_grid ); ?>">
 			<?php
 			$latest_posts = new WP_Query( array(
 				'post_type'           => 'member',
-				'posts_per_page'      => -1,
+				'posts_per_page'      => 10,
 				'post_status'         => 'publish',
 			) );
 			if ($latest_posts->have_posts()) :
@@ -24,6 +26,7 @@
 					$thumb_id 	= get_post_thumbnail_id();
 					$thumb_url 	= $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : get_template_directory_uri() . '/assets/images/girlie-abellana.png';
 					$thumb_alt 	= $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '';
+					$credentials 	= get_field('member_credentials');
 					$license 	= get_field('member_license_number');
 					$provinces 	= get_field( 'member_provinces' );
 					$socials 	= get_field( 'member_social_media' );
@@ -41,9 +44,16 @@
 					</div>
 					<div class="our-team__item-content flex-1 lg:basis-1/2 bg-gray-light rounded-primary p-8 md:p-10 lg:py-[3rem]">
 						<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-						<?php if ( $license ) : ?>
-						<div class="our-team__meta font-normal">
-							<span class="after:content-[''] after:w-[60%] after:h-[2px] after:bg-primary after:my-4 after:block">
+						<?php if ( $credentials ) : ?>
+						<div class="our-team__meta font-medium mb-2">
+							<span class="text-primary">
+								<?php echo esc_html( $credentials ); ?>
+							</span>
+						</div>
+						<?php endif; ?>
+                        <?php if ( $license ) : ?>
+						<div class="our-team__meta text-base font-normal">
+							<span class="after:content-[''] after:w-[50%] after:h-[2px] after:bg-primary after:my-2 after:block">
 								<?php echo esc_html( $license ); ?>
 							</span>
 						</div>

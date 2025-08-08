@@ -4,9 +4,21 @@
         // @apply text-bgmain no-underline visited:text-white hover:text-primary transition duration-300;
         @apply text-bgmain no-underline visited:text-white transition duration-300;
 
-        // &:hover,
-        // &:focus {
-        //     @apply text-primary outline-none;
-        // }
+        &:hover,
+        &:focus {
+            @apply text-primary outline-none;
+        }
+
+        &:hover,
+        &:focus,
+        &[aria-current="page"] {
+            &:after {
+                @apply w-0;
+            }
+        }
+    }
+
+    .footer-menu .btn-menu {
+        @apply hidden;
     }
 }
