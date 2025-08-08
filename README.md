@@ -1,7 +1,7 @@
 # Wealthelite Advisors WordPress Theme
 
 ## Overview
-The **Wealthelite Advisors** theme is a custom-built WordPress theme optimized for modern front-end tooling and developer workflow.  
+The **Wealthelite Advisors** theme is a custom-built WordPress theme optimized for modern front-end tooling and developer workflow.
 It integrates **Vite**, **TailwindCSS**, and modern JavaScript (ESM) for a fast and modular development experience.
 
 ## Features
@@ -61,11 +61,11 @@ functions.php/
 ```
 
 ## Asset Loading
-In **development mode**, the theme connects to Vite's dev server for HMR.  
+In **development mode**, the theme connects to Vite's dev server for HMR.
 In **production mode**, assets are loaded from `/dist` using `manifest.json`.
 
 ## License
 This theme is licensed under the [GPL-2.0+](https://www.gnu.org/licenses/gpl-2.0.html).
 
 ---
-© functions.php Theme Developers
+© Glenny Abellana - Theme Author
