@@ -1,16 +1,11 @@
 {
   "js/index.js": {
-    "file": "assets/main-4Ve_jDwb.js",
+    "file": "assets/main-B-rfj1WH.js",
     "name": "main",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/style-DFv5PK_1.css"
+      "assets/main-C34aNZjM.css"
     ]
-  },
-  "scss/style.scss": {
-    "file": "assets/style-DFv5PK_1.css",
-    "src": "scss/style.scss",
-    "isEntry": true
   }
 }
