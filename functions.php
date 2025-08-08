@@ -70,18 +70,6 @@ function wealthelite_advisors_setup() {
 		)
 	);
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'wealthelite_advisors_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
-
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -94,7 +82,7 @@ function wealthelite_advisors_setup() {
 		'custom-logo',
 		array(
 			'height'      => 250,
-			'width'       => 250,
+			'width'       => 400,
 			'flex-width'  => true,
 			'flex-height' => true,
 		)
@@ -135,24 +123,213 @@ function wealthelite_advisors_widgets_init() {
 add_action( 'widgets_init', 'wealthelite_advisors_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue scripts and styles with Vite dev/prod support.
  */
 function wealthelite_advisors_scripts() {
-	wp_enqueue_style( 'wealthelite-advisors-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'wealthelite-advisors-style', 'rtl', 'replace' );
+	$theme_dir = get_stylesheet_directory();
+	$theme_uri = get_stylesheet_directory_uri();
 
-	wp_enqueue_script( 'wealthelite-advisors-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
+	// Core styles/scripts
+	wp_enqueue_style( 'dashicons' );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
+
+	// --- DEV MODE: Try connecting to Vite dev server automatically ---
+	$is_dev         = false;
+	$dev_host       = 'localhost';
+	$dev_port       = 3000;
+	$dev_server_url = "http://{$dev_host}:{$dev_port}";
+
+	if ( function_exists( 'fsockopen' ) ) {
+		$conn = @fsockopen( $dev_host, $dev_port, $errno, $errstr, 0.25 );
+		if ( $conn ) {
+			$is_dev = true;
+			fclose( $conn );
+		}
+	}
+
+	if ( $is_dev ) {
+		// Vite HMR client + main entry
+		wp_enqueue_script( 'vite-client', $dev_server_url . '/@vite/client', array(), null, true );
+		wp_script_add_data( 'vite-client', 'type', 'module' );
+
+		wp_enqueue_script( 'theme-main-dev', $dev_server_url . '/js/index.js', array(), null, true );
+		wp_script_add_data( 'theme-main-dev', 'type', 'module' );
+
+		wp_enqueue_style( 'theme-style-dev', $dev_server_url . '/scss/style.scss', array(), null );
+		return;
+	}
+
+	// --- PROD MODE: Load from Vite manifest ---
+	$manifest_candidates = array(
+		"{$theme_dir}/dist/.vite/manifest.json",
+		"{$theme_dir}/dist/manifest.json",
+	);
+
+	$manifest_path = '';
+	foreach ( $manifest_candidates as $candidate ) {
+		if ( file_exists( $candidate ) ) {
+			$manifest_path = $candidate;
+			break;
+		}
+	}
+
+	if ( '' === $manifest_path ) {
+		// No manifest found, nothing to enqueue.
+		return;
+	}
+
+	$manifest = json_decode( file_get_contents( $manifest_path ), true );
+	if ( ! is_array( $manifest ) ) {
+		return;
+	}
+
+	$entry_key = 'js/index.js';
+	if ( empty( $manifest[ $entry_key ]['file'] ) ) {
+		return;
+	}
+
+	$js_file = $manifest[ $entry_key ]['file'];
+	$js_abs  = "{$theme_dir}/dist/{$js_file}";
+	$js_ver  = file_exists( $js_abs ) ? filemtime( $js_abs ) : null;
+
+	wp_enqueue_script(
+		'wea-main',
+		"{$theme_uri}/dist/{$js_file}",
+		array(),
+		$js_ver,
+		true
+	);
+
+	// Enqueue any CSS emitted by the entry.
+	if ( ! empty( $manifest[ $entry_key ]['css'] ) && is_array( $manifest[ $entry_key ]['css'] ) ) {
+		foreach ( $manifest[ $entry_key ]['css'] as $i => $css_file ) {
+			$css_abs = "{$theme_dir}/dist/{$css_file}";
+			$css_ver = file_exists( $css_abs ) ? filemtime( $css_abs ) : null;
+
+			wp_enqueue_style(
+				"wea-style-{$i}",
+				"{$theme_uri}/dist/{$css_file}",
+				array(),
+				$css_ver
+			);
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wealthelite_advisors_scripts' );
 
 /**
- * Implement the Custom Header feature.
+ * Load and decode the Vite manifest.json.
+ *
+ * @param string $theme_dir Absolute path to the theme directory.
+ * @return array            Decoded manifest, or empty array on failure.
  */
-require get_template_directory() . '/inc/custom-header.php';
+function wealthelite_advisors_get_manifest( $theme_dir ) {
+	$manifest_path = trailingslashit( $theme_dir ) . 'dist/.vite/manifest.json';
+
+	if ( ! file_exists( $manifest_path ) ) {
+		return array();
+	}
+
+	$content = file_get_contents( $manifest_path );
+	if ( false === $content ) {
+		return array();
+	}
+
+	$data = json_decode( $content, true );
+	return is_array( $data ) ? $data : array();
+}
+
+/**
+ * Filters the script tag for specific handles to add type="module".
+ *
+ * @param string $tag    The script tag for the enqueued script.
+ * @param string $handle The script's registered handle.
+ * @return string Modified script tag.
+ */
+function wealthelite_advisors_script_loader_tag( $tag, $handle ) {
+	if ( in_array( $handle, array( 'vite-client', 'theme-dev' ), true ) ) {
+		$tag = str_replace( '<script ', '<script type="module" ', $tag );
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', 'wealthelite_advisors_script_loader_tag', 10, 2 );
+
+/**
+ * Preconnect & preload the Adobe Fonts kit.
+ *
+ * @return void
+ */
+function wealthelite_preconnect_adobe_fonts() {
+	// Preconnect to the kit CSS host.
+	echo '<link rel="preconnect" href="https://use.typekit.net">' . "\n";
+	// Preconnect to the font‐file CDN (with CORS).
+	echo '<link rel="preconnect" href="https://p.typekit.net" crossorigin>' . "\n";
+	// Preload the kit CSS, then swap it into a stylesheet on load.
+	echo '<link rel="preload" as="style" href="https://use.typekit.net/odm7dfi.css" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
+}
+add_action( 'wp_head', 'wealthelite_preconnect_adobe_fonts', 1 );
+
+/**
+ * Load the most specific page template based on slug, with sensible fallbacks.
+ */
+function wealthelite_load_page_template_by_slug() {
+	$slug          = sanitize_title( get_post_field( 'post_name' ) ?: 'default' );
+	$template_name = "page-{$slug}";
+	$partials      = array(
+		"template-parts/content-{$template_name}.php",
+		'template-parts/content-page.php',
+		'template-parts/content.php',
+	);
+	locate_template( $partials, true );
+}
+
+/**
+ * Removes editor support for the 'page' post type.
+ */
+function wealthelite_remove_editor_support_for_pages() {
+    remove_post_type_support( 'page', 'editor' );
+}
+add_action( 'init', 'wealthelite_remove_editor_support_for_pages', 11 );
+
+/**
+ * Temporary: Allow SVG upload
+ */
+function allow_svg_upload($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+// add_filter('upload_mimes', 'allow_svg_upload');
+
+/**
+ * Format a phone number into format: XXX.XXX.XXXX
+ *
+ * @param string $number The phone number to format
+ * @return string Formatted phone number or original input if invalid
+ */
+function format_office_number( $number ) {
+    $digits = preg_replace( '/\\D/', '', $number ); // Keep only digits
+    if ( strlen( $digits ) === 10 ) {
+        return substr( $digits, 0, 3 ) . '.' . substr( $digits, 3, 3 ) . '.' . substr( $digits, 6 );
+    }
+    return $number;
+}
+
+/**
+ * Check if the 'member' custom post type has more than 1 published post.
+ *
+ * @return bool True if more than 1 post exists, false otherwise.
+ */
+function has_multiple_members() {
+    $count = wp_count_posts( 'member' );
+
+    if ( isset( $count->publish ) && $count->publish > 1 ) {
+        return true;
+    }
+
+    return false;
+}
 
 /**
  * Custom template tags for this theme.
@@ -165,14 +342,15 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Custom ACF functions.
+ */
+require get_template_directory() . '/inc/acf-functions.php';
+
 

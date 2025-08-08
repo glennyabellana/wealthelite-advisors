@@ -1,0 +1,16 @@
+@layer components {
+    .type-page a {
+        @apply no-underline;
+    }
+
+    @screen md {
+        .our-team__item:nth-of-type(4n+3) > .our-team__item-display-pic,
+        .our-team__item:nth-of-type(4n+4) > .our-team__item-display-pic {
+            @apply order-2;
+        }
+        .our-team__item:nth-of-type(4n+3) > .our-team__item-content,
+        .our-team__item:nth-of-type(4n+4) > .our-team__item-content {
+            @apply order-1;
+        }
+    }
+}

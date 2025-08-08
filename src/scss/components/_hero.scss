@@ -1,0 +1,28 @@
+@layer components {
+    .hero-banner {
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        &:before {
+            content: '';
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .hero-content {
+        // @apply min-h-[20rem] sm:min-h-[30rem] h-[calc(100svh-100px)] lg:h-[calc(100vh-200px)];
+        // @apply overflow-hidden relative z-10 flex flex-col items-start justify-center lg:justify-end p-10 md:pb-[6rem] lg:pb-[12rem] md:pl-[6rem] min-h-[20rem] sm:min-h-[30rem] h-[calc(40vh)] md:h-[calc(60vh-70px)] lg:h-[calc(100vh-200px)] 2xl:max-h-[50rem];
+        @apply overflow-hidden relative z-10 flex flex-col items-start justify-center lg:justify-end p-10 md:pb-[5rem] lg:pb-[8rem] md:pl-[6rem] min-h-[20rem] sm:min-h-[30rem] h-[20rem] md:h-[30rem] lg:h-[40rem] 2xl:max-h-[50rem];
+    }
+
+    // .post-thumbnail {
+    //     @extend .hero-banner;
+    //     @apply overflow-hidden absolute rounded-primary h-full w-full;
+
+    // }
+}

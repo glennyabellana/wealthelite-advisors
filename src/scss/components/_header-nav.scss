@@ -1,0 +1,40 @@
+@layer components {
+    .site-header {
+        @apply bg-bgmain;
+    }
+
+    .main-navigation ul {
+        @apply block sm:flex;
+    }
+
+    .main-navigation ul ul {
+        @apply  flex-row flex-wrap bg-bgmain  mx-6 space-x-8 gap-6;
+    }
+
+
+    .main-navigation a {
+        @apply text-navlink no-underline outline-none font-medium sm:text-sm lg:text-lg transition-colors duration-300;
+
+        &:after {
+            @apply content-[''] block mt-1 h-[3px] w-0 bg-primary transition-[width] duration-300;
+        }
+
+        &:hover,
+        &:focus {
+            // @apply text-navlink outline-none;
+            @apply text-primary outline-none;
+
+            &:after {
+                @apply w-full;
+            }
+        }
+
+        &[aria-current="page"] {
+            @apply text-primary;
+
+            &:after {
+                @apply w-full;
+            }
+        }
+    }
+}

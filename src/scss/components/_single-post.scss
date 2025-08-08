@@ -1,0 +1,71 @@
+@layer components {
+    .single {
+        p {
+            @apply mb-4;
+        }
+    }
+
+    .entry-meta a {
+        @apply decoration-1;
+    }
+
+    .post-navigation {
+        @apply mt-[4rem];
+    }
+
+    .nav-previous,
+    .nav-next {
+        @apply text-sm;
+    }
+
+    .entry-content,
+    .comments-area {
+        h1,h2,h3,h4,h5,h6 {
+            @apply my-4;
+        }
+    }
+
+    .comment-list li {
+        @apply mb-6;
+    }
+
+    .comment-meta a {
+        @apply no-underline;
+    }
+
+    .comment-respond {
+        @apply mt-[4rem] before:content-[''] before:block before:bg-primary before:w-[10%] before:h-[0.3rem];
+    }
+
+    /* Comments
+    --------------------------------------------- */
+    .comment-content a {
+        word-wrap: break-word;
+    }
+
+    .bypostauthor {
+        display: block;
+    }
+
+    /* Widgets
+    --------------------------------------------- */
+    .widget {
+        margin: 0 0 1.5em;
+    }
+
+    .widget select {
+        max-width: 100%;
+    }
+
+    /* Media
+    --------------------------------------------- */
+    .page-content .wp-smiley,
+    .entry-content .wp-smiley,
+    .comment-content .wp-smiley {
+        border: none;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 0;
+    }
+
+}
